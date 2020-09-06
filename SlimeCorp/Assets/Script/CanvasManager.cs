@@ -42,7 +42,7 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    public void AttackRoomPopupPanel_Info()
+    public void ChangingPanelFunction()
     {
         if (CameraScript.CameraLocation == 3)
         {
@@ -53,11 +53,5 @@ public class CanvasManager : MonoBehaviour
         {
             Market_StockPanel.SetActive(true);
         }
-    }
-
-    public void MarketPopupPanel_Stock()
-    {
-        if (CameraScript.CameraLocation == 3)
-            Market_StockPanel.SetActive(true);
     }
 }
