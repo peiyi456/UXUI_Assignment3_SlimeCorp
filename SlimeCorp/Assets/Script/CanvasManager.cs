@@ -5,6 +5,7 @@ using UnityEngine;
 public class CanvasManager : MonoBehaviour
 {
     public GameObject MarketButton, FactoryButton, AttackRoomButton, MainCamera;
+    public GameObject AttackRoom_LabInfoPanel, Market_StockPanel;
     CameraMovementScript CameraScript;
 
     RectTransform attackRoomRectLocation, LeftRectLocation, RightRectLocation;
@@ -39,5 +40,24 @@ public class CanvasManager : MonoBehaviour
             attackRoomRectLocation.anchorMax = RightRectLocation.anchorMax;
             attackRoomRectLocation.anchoredPosition = RightRectLocation.anchoredPosition;
         }
+    }
+
+    public void AttackRoomPopupPanel_Info()
+    {
+        if (CameraScript.CameraLocation == 3)
+        {
+            AttackRoom_LabInfoPanel.SetActive(true);
+        }
+
+        else if (CameraScript.CameraLocation == 1)
+        {
+            Market_StockPanel.SetActive(true);
+        }
+    }
+
+    public void MarketPopupPanel_Stock()
+    {
+        if (CameraScript.CameraLocation == 3)
+            Market_StockPanel.SetActive(true);
     }
 }
