@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a566acb080f0d6d438bf317c63c52eaf, type: 3}
-  m_Name: Customer_2
+  m_Name: Customer_4
   m_EditorClassIdentifier: 
-  name: Wrestler
+  name: Idol
   image: {fileID: 0}
   preferChoice: 1
-  animatorController: {fileID: 9100000, guid: d1c9e82db6e1d734bb54e8c12fed151d, type: 2}
+  animatorController: {fileID: 9100000, guid: 41f96a10459ba6747947988cdd04b741, type: 2}

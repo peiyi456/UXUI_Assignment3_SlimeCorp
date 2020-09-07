@@ -43,10 +43,11 @@ public class CustomerAttribute : MonoBehaviour
 
     IEnumerator Shopping()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(8.5f);
         //Buy function;
         alreadyPurchase = true;
-        
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;
         speed = 2f;
         destination = deleteColliderLocation;
     }

@@ -7,7 +7,7 @@ public class Queue_Handler : MonoBehaviour
     List<GameObject> guestList = new List<GameObject>();
     private List<Vector3> positionList = new List<Vector3>();
     Vector3 firstPosition = new Vector3(1f, 7.8f);
-    float positionSize = .5f;
+    float positionSize = .7f;
 
     public GameObject CustomerGameObject;
     public Customer[] customerType;
@@ -39,7 +39,7 @@ public class Queue_Handler : MonoBehaviour
             }
         }
 
-        if (guestList.Count < 3)
+        if (guestList.Count < 5)
         {
             if (generatingCustomer == false)
             {
@@ -51,19 +51,20 @@ public class Queue_Handler : MonoBehaviour
 
     IEnumerator AddGuest()
     {
-        yield return new WaitForSeconds(1f);
+        float RandomNum = Random.Range(1, 3);
+        yield return new WaitForSeconds(RandomNum);
         GameObject spawnedCustomer = Instantiate(CustomerGameObject, SpawnedLocation, Quaternion.identity) as GameObject;
         guestList.Add(spawnedCustomer);
         DecideCustomerType(spawnedCustomer);
         spawnedCustomer.GetComponent<CustomerAttribute>().destination = positionList[guestList.IndexOf(spawnedCustomer)];
+        spawnedCustomer.GetComponent<SpriteRenderer>().sortingOrder = 6 - guestList.IndexOf(spawnedCustomer);
         spawnedCustomer.GetComponent<CustomerAttribute>().speed = 1f;
         generatingCustomer = false;
     }
 
     void DecideCustomerType(GameObject customer)
     {
-        int RandomNum = Random.Range(0, 2);
-        Debug.Log(RandomNum);
+        int RandomNum = Random.Range(0, 8);
         Customer selectedCustomer = customerType[RandomNum];
 
         customer.name = selectedCustomer.name;
@@ -92,6 +93,7 @@ public class Queue_Handler : MonoBehaviour
         for (int i = 0; i < guestList.Count; i++)
         {
             guestList[i].GetComponent<CustomerAttribute>().destination = positionList[i];
+            guestList[i].GetComponent<SpriteRenderer>().sortingOrder = 6 - i;
         }
     }
 }

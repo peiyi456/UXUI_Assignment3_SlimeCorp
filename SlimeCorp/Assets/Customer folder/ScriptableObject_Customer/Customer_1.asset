@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Customer_1
   m_EditorClassIdentifier: 
   name: Kairo
-  image: {fileID: 21300000, guid: 68d68aad99d1aa24ca536a76153910f6, type: 3}
+  image: {fileID: 0}
   preferChoice: 1
   animatorController: {fileID: 9100000, guid: 68019e9efc995014d8638abeed03852b, type: 2}
