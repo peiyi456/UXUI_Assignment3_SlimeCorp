@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cloud
+  - FactoryGround
+  - DeleteSlime
+  - BasicSlime
+  - WoodSlime
+  - LavaSlime
+  - TekSlime
   layers:
   - Default
   - TransparentFX
@@ -14,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - SlimeColliderLayer
   - 
   - 
   - 
