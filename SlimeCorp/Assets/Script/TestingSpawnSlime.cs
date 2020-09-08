@@ -22,13 +22,17 @@ public class TestingSpawnSlime : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                float RandomX = Random.Range(2f, 35f);
-                float RandomY = Random.Range(0.5f, 3f);
-       
-                SlimeFactories[i].GetComponent<Animator>().SetTrigger("Shoot");
-                GameObject spawnedSlime = Instantiate(slimeGameObject, SpawnedLocation[i].transform.position, Quaternion.identity) as GameObject;
-                DecideSlimeType(spawnedSlime, SlimeType[i]);
-                spawnedSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomX, RandomY), ForceMode2D.Impulse);
+                if(GameManagerScript.UnlockLevel[i] == true)
+                {
+                    float RandomX = Random.Range(2f, 35f);
+                    float RandomY = Random.Range(0.5f, 3f);
+
+                    SlimeFactories[i].GetComponent<Animator>().SetTrigger("Shoot");
+                    GameObject spawnedSlime = Instantiate(slimeGameObject, SpawnedLocation[i].transform.position, Quaternion.identity) as GameObject;
+                    DecideSlimeType(spawnedSlime, SlimeType[i]);
+                    GameManagerScript.SlimeTypeCount[i]++;
+                    spawnedSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomX, RandomY), ForceMode2D.Impulse);
+                }
             }
         }
     }
