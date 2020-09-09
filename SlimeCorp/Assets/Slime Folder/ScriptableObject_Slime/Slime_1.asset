@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd7db94b23c928419d7e4d7a0e20779, type: 3}
   m_Name: Slime_1
   m_EditorClassIdentifier: 
-  name: Basic Slime
-  image: {fileID: 0}
   animatorController: {fileID: 9100000, guid: c8542430f33751f4d831a1f26a24282e, type: 2}
   tag: BasicSlime
+  name: Basic Slime
+  Power: 1
+  MaxStorage: 2c010000b80b000000a3e111
+  UpgradeCost: 6400000064000000

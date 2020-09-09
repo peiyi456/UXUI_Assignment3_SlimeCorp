@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd7db94b23c928419d7e4d7a0e20779, type: 3}
   m_Name: Slime_4
   m_EditorClassIdentifier: 
-  name: Tek Slime
-  image: {fileID: 0}
   animatorController: {fileID: 9100000, guid: ed93cd707380c54478a7ea13ceb3908f, type: 2}
   tag: TekSlime
+  name: Tek Slime
+  Power: 50
+  MaxStorage: f40100008813000000a3e111
+  UpgradeCost: 6400000064000000

@@ -5,8 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Slime", menuName = "Slimes")]
 public class Slime : ScriptableObject
 {
-    public new string name;
-    public Sprite image;
+    [Header("Unity Attribute")]
     public RuntimeAnimatorController animatorController;
     public string tag;
+
+    [Header("Slime Data")]
+    public new string name;
+    public int Power;
+    public int[] MaxStorage;
+    public int[] UpgradeCost;
 }

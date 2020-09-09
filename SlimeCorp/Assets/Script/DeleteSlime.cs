@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class DeleteSlime : MonoBehaviour
 {
-    GameObject[] BasicSlime_arr, WoodSlime_arr, LavaSlime_arr, TekSlime_arr;
-
     // Update is called once per frame
     void Start()
     {
-        InvokeRepeating("CheckSlimeAmount", 1, 1);
+        InvokeRepeating("CheckSlimeAmount", 1, 2);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -19,11 +17,20 @@ public class DeleteSlime : MonoBehaviour
 
     void CheckSlimeAmount()
     {
-        BasicSlime_arr = GameObject.FindGameObjectsWithTag("BasicSlime");
-        if (BasicSlime_arr.Length >= 20)
+        GameObject[][] TempArray;
+        TempArray = new GameObject[4][];
+        TempArray[0] = GameObject.FindGameObjectsWithTag("BasicSlime");
+        TempArray[1] = GameObject.FindGameObjectsWithTag("WoodSlime");
+        TempArray[2] = GameObject.FindGameObjectsWithTag("LavaSlime");
+        TempArray[3] = GameObject.FindGameObjectsWithTag("TekSlime");
+
+        for (int i = 0; i < 4; i++)
         {
-            int num = Random.Range(0, BasicSlime_arr.Length);
-            BasicSlime_arr[num].GetComponent<SlimeBehaviour>().destination = new Vector3(20f, BasicSlime_arr[num].transform.position.y);
+            if (TempArray[i].Length >= 20)
+            {
+                int num = Random.Range(0, TempArray[i].Length);
+                TempArray[i][num].GetComponent<SlimeBehaviour>().destination = new Vector3(20f, TempArray[i][num].transform.position.y);
+            }
         }
     }
 }
