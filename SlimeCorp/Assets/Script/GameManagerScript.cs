@@ -9,6 +9,7 @@ public class GameManagerScript : MonoBehaviour
     public long TotalSlimePower = 0;
     public static long TotalCash = 0;
     public static int[] SlimeTypeCount = { 0, 0, 0, 0 };
+    public static int[] SlimeTypeForAttackRoom = { 0, 0, 0, 0 };
     public static bool[] UnlockLab = { true, false, false, false};
     public GameObject[] LockLabScreen;
     public static int[] LabLevel = { 1, 1, 1, 1};
@@ -21,7 +22,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame

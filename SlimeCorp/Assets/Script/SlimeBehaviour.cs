@@ -9,6 +9,7 @@ public class SlimeBehaviour : MonoBehaviour
 
     float speed = 1f;
 
+    public bool SpawnAtLab = true;
     public Vector3 destination;
     float distTemp;
     bool OnGround = false;
@@ -56,13 +57,22 @@ public class SlimeBehaviour : MonoBehaviour
     {
         OnGround = true;
         rb.velocity = Vector2.zero;
-        if(GameObject.FindGameObjectsWithTag(this.tag).Length >= 10)
+
+        if(SpawnAtLab)
         {
-            destination = new Vector3(20f, transform.position.y);
+            if (this.gameObject.transform.parent.transform.childCount >= 20)
+            {
+                destination = new Vector3(20f, transform.position.y);
+            }
+            else
+            {
+                destination = new Vector3(transform.position.x, transform.position.y);
+            }
         }
         else
         {
             destination = new Vector3(transform.position.x, transform.position.y);
         }
+        
     }
 }
