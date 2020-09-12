@@ -10731,6 +10731,36 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1641485190}
+    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseAttackSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3d2f05ebb95964c94bbdf8c792fef3, type: 3}
 --- !u!1 &1160268764
