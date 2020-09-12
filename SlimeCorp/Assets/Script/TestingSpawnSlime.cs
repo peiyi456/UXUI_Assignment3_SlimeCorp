@@ -24,31 +24,17 @@ public class TestingSpawnSlime : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+
+    }
+
+    void OnMouseDown()
+    {
+        for (int i = 0; i < 4; i++)
         {
-            for (int i = 0; i < 4; i++)
+            if (GameManagerScript.UnlockLab[i] == true)
             {
-                if(GameManagerScript.UnlockLab[i] == true)
-                {
-                    //float RandomX = Random.Range(2f, 35f);
-                    //float RandomY = Random.Range(0.5f, 3f);
-
-                    //SlimeFactories[i].GetComponent<Animator>().SetTrigger("Shoot");
-                    //GameObject spawnedSlime = Instantiate(slimeGameObject, SpawnedLocation[i].transform.position, Quaternion.identity) as GameObject;
-                    //DecideSlimeType(spawnedSlime, SlimeType[i]);
-                    //spawnedSlime.transform.parent = LabArray[i].transform;
-                    //GameManagerScript.SlimeTypeCount[i] +=  1 * GameManagerScript.LabLevel[i];
-                    //spawnedSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomX, RandomY), ForceMode2D.Impulse);
-                    SpawnSlime(i, SpawnedLocation[i].transform.position, true);
-                    Debug.Log(GameManagerScript.SlimeTypeCount[0]);
-                }
+                SpawnSlime(i, SpawnedLocation[i].transform.position, true);
             }
-        }
-
-        if(Input.GetButtonDown("Fire2"))
-        {
-            GameManagerScript.SlimeTypeCount[0]--;
-            Debug.Log(GameManagerScript.SlimeTypeCount[0]);
         }
     }
 

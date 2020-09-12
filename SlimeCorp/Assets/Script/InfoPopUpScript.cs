@@ -15,6 +15,7 @@ public class InfoPopUpScript : MonoBehaviour
     [SerializeField] Camera mainCamera = null;
     public GameObject[] LockPanel;
     public GameObject[] UnlockButton;
+    public GameObject[] UpgradeButton;
 
 
     [Header("Internal Data")]
@@ -88,7 +89,7 @@ public class InfoPopUpScript : MonoBehaviour
             rightButton.interactable = true;
         }
 
-        //Update Unlock Button Interactable
+        //Update Unlock & Upgrade Button Interactable
         for(int i = 0; i < 4; i++)
         {
             if(GameManagerScript.TotalCash < slimeType[i].UnlockCost)
@@ -98,6 +99,38 @@ public class InfoPopUpScript : MonoBehaviour
             else
             {
                 UnlockButton[i].GetComponent<Button>().interactable = true;
+            }
+
+            if(GameManagerScript.LabLevel[i] < 3)
+            {
+                if (GameManagerScript.TotalCash < slimeType[i].UpgradeCost[GameManagerScript.LabLevel[i] - 1])
+                {
+                    UpgradeButton[i].GetComponent<Button>().interactable = false;
+                }
+                else
+                {
+                    UpgradeButton[i].GetComponent<Button>().interactable = true;
+                }
+            }
+
+            if(GameManagerScript.LabLevel[i] == 3)
+            {
+                UpgradeButton[i].GetComponent<Button>().interactable = false;
+            }
+        }
+
+        //Update lockPanel setactive
+        for (int i = 0; i < 4; i++)
+        {
+            if (GameManagerScript.UnlockLab[i] == false)
+            {
+                LockPanel[i].SetActive(true);
+                UnlockButton[i].SetActive(true);
+            }
+            else
+            {
+                LockPanel[i].SetActive(false);
+                UnlockButton[i].SetActive(false);
             }
         }
     }
@@ -127,25 +160,15 @@ public class InfoPopUpScript : MonoBehaviour
         InfoPanelanim.SetTrigger("Open");
         BlackScreen.SetActive(true);
 
-        for(int i = 0; i < 4; i++)
-        {
-            if(GameManagerScript.UnlockLab[i] == false)
-            {
-                LockPanel[i].SetActive(true);
-                UnlockButton[i].SetActive(true);
-            }
-            else
-            {
-                LockPanel[i].SetActive(false);
-                UnlockButton[i].SetActive(false);
-            }
-        }
     }
     
     public void CloseInfoPanel()
     {
         InfoPanelanim.SetTrigger("Close");
         BlackScreen.SetActive(false);
+        ButtonGroup_isAble = false;
+        BlackPanel_buttongroup.SetActive(false);
+        ButtonGroupAnim.SetTrigger("Close");
         StartCoroutine(DiasblePanel());
     }
 
@@ -184,8 +207,21 @@ public class InfoPopUpScript : MonoBehaviour
         PanelGroup.GetComponent<RectTransform>().anchoredPosition = nextPos;
     }
 
-    public void UnlockLabFunction()
+    public void UnlockLabFunction(int index)
     {
+        if(GameManagerScript.TotalCash >= slimeType[index].UnlockCost)
+        {
+            GameManagerScript.TotalCash -= slimeType[index].UnlockCost;
+            GameManagerScript.UnlockLab[index] = true;
+        }
+    }
 
+    public void UpgradeLabFunction(int index)
+    {
+        if (GameManagerScript.TotalCash >= slimeType[index].UpgradeCost[GameManagerScript.LabLevel[index] - 1])
+        {
+            GameManagerScript.TotalCash -= slimeType[index].UpgradeCost[GameManagerScript.LabLevel[index] - 1];
+            GameManagerScript.LabLevel[index]++;
+        }
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - WoodSlime
   - LavaSlime
   - TekSlime
+  - ShoppingSystem
   layers:
   - Default
   - TransparentFX

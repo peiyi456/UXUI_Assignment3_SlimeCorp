@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour
 {
-    public GameObject MarketButton, FactoryButton, AttackRoomButton, MainCamera, AttackSceneCamera, SlimeTVScreen;
+    public GameObject MainCamera, AttackSceneCamera, SlimeTVScreen, SlimeTVGameObject;
     public GameObject AttackRoom_LabInfoPanel, Market_StockPanel, BottomBar, AttackSystem;
     public GameObject InfoButton, StockButton, SlimeTVButton;
     CameraMovementScript CameraScript;
@@ -18,9 +18,6 @@ public class CanvasManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //attackRoomRectLocation = AttackRoomButton.GetComponent<RectTransform>();
-        //LeftRectLocation = MarketButton.GetComponent<RectTransform>();
-        //RightRectLocation = FactoryButton.GetComponent<RectTransform>();
         CameraScript = MainCamera.GetComponent<CameraMovementScript>();
     }
 
@@ -52,8 +49,6 @@ public class CanvasManager : MonoBehaviour
 
         if (CameraScript.CameraLocation == 1)
         {
-            //InfoPanelButtonGroup.GetComponent<Animator>().SetTrigger("Close");
-            //BlackScene.SetActive(false);
             Market_StockPanel.SetActive(true);
         }
     }
@@ -63,6 +58,7 @@ public class CanvasManager : MonoBehaviour
         CameraScript.CameraLocation = 4;
         BottomBar.SetActive(false);
         SlimeTVScreen.SetActive(true);
+        SlimeTVGameObject.GetComponent<SlimeTVScript>().ShowingTV = true;
         StartCoroutine(ZoomingToTV());
     }
 
@@ -118,6 +114,7 @@ public class CanvasManager : MonoBehaviour
 
         BottomBar.SetActive(true);
         SlimeTVScreen.SetActive(false);
+        SlimeTVGameObject.GetComponent<SlimeTVScript>().ShowingTV = false;
         CameraScript.CameraLocation = 2;
     }
 }

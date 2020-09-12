@@ -10,7 +10,7 @@ public class SlimeTVScript : MonoBehaviour
     public float speed = 0.5f;
     int speedMultiplier = 1;
     Vector3 destination;
-    bool ShowingTV = false;
+    public bool ShowingTV = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class SlimeTVScript : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, destination, speedMultiplier * speed * Time.deltaTime);
 
-        if(transform.position.x == destination.x)
+        if(Mathf.Abs(transform.position.x - destination.x) <= 0.1f)
         {
             speedMultiplier = 0;
         }

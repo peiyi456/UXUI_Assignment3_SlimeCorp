@@ -15,6 +15,7 @@ public class AttackSystem : MonoBehaviour
     public GameObject[] LockCountry;
     public GameObject[] CountryFlag;
     public Text[] CountryPowerText;
+    public Text[] BenefitText;
     [SerializeField] GameObject WarningPanel = null;
     [SerializeField] GameObject DuringAttack_gameObject = null;
     [SerializeField] GameObject LoadingImageGroup = null;
@@ -49,6 +50,7 @@ public class AttackSystem : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             CountryPowerText[i].text = "" + CountryData_s[i].CountryPower;
+            BenefitText[i].text = "Cash +" + CountryData_s[i].EarnPerSecond + "/s";
         }
         
 

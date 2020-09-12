@@ -16,6 +16,6 @@ MonoBehaviour:
   tag: LavaSlime
   name: Lava Slime
   Power: 15
-  MaxStorage: f40100008813000000a3e111
-  UpgradeCost: 6400000064000000
+  MaxStorage: 000000000000000000000000
+  UpgradeCost: e8030000dc050000
   UnlockCost: 1000

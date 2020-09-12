@@ -5,6 +5,7 @@ using UnityEngine;
 public class CustomerAttribute : MonoBehaviour
 {
     Animator anim;
+    public GameObject ShoppingSystem_gameObject;
 
     public Vector3 destination;
     public float speed;
@@ -45,6 +46,9 @@ public class CustomerAttribute : MonoBehaviour
     {
         yield return new WaitForSeconds(8.5f);
         //Buy function;
+        ShoppingSystem_gameObject = GameObject.Find("ShoppingSystem (1)");
+        ShoppingSystem_gameObject.GetComponent<ShoppingSystem>().Buy(0);
+
         alreadyPurchase = true;
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;

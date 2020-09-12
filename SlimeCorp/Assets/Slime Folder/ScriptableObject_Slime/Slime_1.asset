@@ -16,5 +16,6 @@ MonoBehaviour:
   tag: BasicSlime
   name: Basic Slime
   Power: 1
-  MaxStorage: 2c010000b80b000000a3e111
-  UpgradeCost: 6400000064000000
+  MaxStorage: 000000000000000000000000
+  UpgradeCost: 64000000c8000000
+  UnlockCost: 0

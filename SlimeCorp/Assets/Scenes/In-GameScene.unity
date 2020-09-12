@@ -283,6 +283,11 @@ MonoBehaviour:
   - {fileID: 372378914}
   - {fileID: 1502350971}
   - {fileID: 1463922851}
+  UpgradeButton:
+  - {fileID: 2062674623}
+  - {fileID: 1544194012}
+  - {fileID: 1696994407}
+  - {fileID: 97281219}
   RayPosition: {x: 0.5, y: 0.55, z: 0}
   MovePageTime: 0.4
   slimeType:
@@ -1353,7 +1358,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 97281222}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 23791153}
+        m_MethodName: UpgradeLabFunction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &97281222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4111,18 +4127,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338030686}
   m_CullTransparentMesh: 0
---- !u!114 &348770631 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6887413711299144195, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1139617201}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &359892424
 GameObject:
   m_ObjectHideFlags: 0
@@ -4338,7 +4342,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 372378917}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 23791153}
+        m_MethodName: UnlockLabFunction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &372378917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5446,7 +5461,7 @@ MonoBehaviour:
   SlimeTVScreen: {fileID: 1734610841}
   LevelUpButton: {fileID: 723470813}
   LevelDownButton: {fileID: 1299170194}
-  CameraLocation: 1
+  CameraLocation: 3
   transitionSpeed: 1
   zoomingSpeed: 1
 --- !u!20 &519420031
@@ -6352,18 +6367,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582572451}
   m_CullTransparentMesh: 0
---- !u!114 &596248299 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6887413711403116294, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1139617201}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &616301782
 GameObject:
   m_ObjectHideFlags: 0
@@ -8592,6 +8595,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShoppingSystem (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388917870331371446, guid: 5f25b1a48d70ed44483149abe21fbffa,
+        type: 3}
+      propertyPath: m_TagString
+      value: ShoppingSystem
       objectReference: {fileID: 0}
     - target: {fileID: 2388917870331371449, guid: 5f25b1a48d70ed44483149abe21fbffa,
         type: 3}
@@ -11488,7 +11496,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1132566525}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 23791153}
+        m_MethodName: UnlockLabFunction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1132566525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11727,112 +11746,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: CountryData_s.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: AttackingTexts.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: CountryPowerText.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: CountryData_s.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: f8420719c13ae804fac1c3dededee68f,
-        type: 2}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: CountryData_s.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: d885d88f453318948a865248af434395,
-        type: 2}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: AttackingTexts.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 728387e547115484e9e53ac2316e27c4,
-        type: 2}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: AttackingTexts.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7c4bc416cda301f4096392bbb366e2f5,
-        type: 2}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: AttackingTexts.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 91fa34e28b93ce045a0031752c51907b,
-        type: 2}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: CountryPowerText.Array.data[0]
-      value: 
-      objectReference: {fileID: 348770631}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: CountryPowerText.Array.data[1]
-      value: 
-      objectReference: {fileID: 1628152609}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: CountryPowerText.Array.data[2]
-      value: 
-      objectReference: {fileID: 1431735843}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: CountryPowerText.Array.data[3]
-      value: 
-      objectReference: {fileID: 596248299}
-    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: AttackingTexts.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: d226c2f90051fef4d9ac6dd17806f988,
-        type: 2}
-    - target: {fileID: 6887413712453734506, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1641485190}
-    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseAttackSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3d2f05ebb95964c94bbdf8c792fef3, type: 3}
 --- !u!1 &1160268764
@@ -13136,7 +13054,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 3.5109568}
+  m_Offset: {x: 0.05345416, y: 2.4149117}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -13147,7 +13065,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.8125, y: 7.0219135}
+  m_Size: {x: 3.6431136, y: 4.8298235}
   m_EdgeRadius: 0
 --- !u!95 &1256564815
 Animator:
@@ -13233,6 +13151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420028}
   speed: 1
+  ShowingTV: 0
 --- !u!1 &1271654761
 GameObject:
   m_ObjectHideFlags: 0
@@ -15040,18 +14959,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418881000}
   m_CullTransparentMesh: 0
---- !u!114 &1431735843 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6887413712621410485, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1139617201}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1433701180
 GameObject:
   m_ObjectHideFlags: 0
@@ -15494,7 +15401,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1463922854}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 23791153}
+        m_MethodName: UnlockLabFunction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1463922854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15542,6 +15460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467219784}
   - component: {fileID: 1467219783}
+  - component: {fileID: 1467219785}
   m_Layer: 0
   m_Name: SlimeSpawner
   m_TagString: Untagged
@@ -15605,6 +15524,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1467219785
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467219782}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 6.440324, y: -1.3118553}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 22.501844, y: 36.461586}
+  m_EdgeRadius: 0
 --- !u!1 &1470536284
 GameObject:
   m_ObjectHideFlags: 0
@@ -15953,7 +15898,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1502350974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 23791153}
+        m_MethodName: UnlockLabFunction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1502350974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16900,7 +16856,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1544194015}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 23791153}
+        m_MethodName: UpgradeLabFunction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1544194015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18105,18 +18072,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1628152609 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6887413712794383925, guid: db3d2f05ebb95964c94bbdf8c792fef3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1139617201}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1641485185
 GameObject:
   m_ObjectHideFlags: 0
@@ -18136,7 +18091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1641485186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18235,12 +18190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e9601936c112a419a36b6e5821782f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MarketButton: {fileID: 0}
-  FactoryButton: {fileID: 0}
-  AttackRoomButton: {fileID: 0}
   MainCamera: {fileID: 519420028}
   AttackSceneCamera: {fileID: 1567822856}
   SlimeTVScreen: {fileID: 1734610841}
+  SlimeTVGameObject: {fileID: 1256564811}
   AttackRoom_LabInfoPanel: {fileID: 1371276968}
   Market_StockPanel: {fileID: 830915423}
   BottomBar: {fileID: 1052500543}
@@ -18491,7 +18444,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1696994410}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 23791153}
+        m_MethodName: UpgradeLabFunction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1696994410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22659,7 +22623,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2062674626}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 23791153}
+        m_MethodName: UpgradeLabFunction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2062674626
 MonoBehaviour:
   m_ObjectHideFlags: 0

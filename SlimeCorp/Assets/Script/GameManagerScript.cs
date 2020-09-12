@@ -7,11 +7,11 @@ public class GameManagerScript : MonoBehaviour
 {
     [Header("Internal Data")]
     public static long TotalSlimePower = 0;
-    public static long TotalCash = 0;
+    public static long TotalCash = 5000;
     private float GameTimer = 0;
     public static int[] SlimeTypeCount = { 0, 0, 0, 0 };
     public static int[] SlimeTypeForAttackRoom = { 0, 0, 0, 0 };
-    public static bool[] UnlockLab = { true, true, false, false};
+    public static bool[] UnlockLab = { true, false, false, false};
     public GameObject[] LockLabScreen;
     public static int[] LabLevel = { 1, 1, 1, 1};
     public static bool[] CountryUnlock = { true, false, false, false };
@@ -35,7 +35,7 @@ public class GameManagerScript : MonoBehaviour
         TotalSlimePower = 0;
         for(int i = 0; i < 4; i++)
         {
-            TotalSlimePower += SlimeTypeCount[i] * slimeType[i].Power * LabLevel[i];
+            TotalSlimePower += SlimeTypeCount[i] * slimeType[i].Power;
         }
         GameTimer += Time.deltaTime;
         if(GameTimer >= 1f)

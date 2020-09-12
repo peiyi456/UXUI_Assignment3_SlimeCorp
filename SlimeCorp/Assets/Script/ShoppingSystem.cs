@@ -97,7 +97,7 @@ public class ShoppingSystem : MonoBehaviour
                     StockButton[i].interactable = false;
                     StockDetails_HaveStock[i].SetActive(true);
                     StockDetails_OutOfStock[i].SetActive(false);
-                    Debug.Log("HaveStock");
+                    //Debug.Log("HaveStock");
                 }
                 else
                 {
@@ -105,7 +105,7 @@ public class ShoppingSystem : MonoBehaviour
                     StockButton[i].interactable = true;
                     StockDetails_HaveStock[i].SetActive(false);
                     StockDetails_OutOfStock[i].SetActive(true);
-                    Debug.Log("NoStock");
+                    //Debug.Log("NoStock");
                 }
             }
         }
@@ -150,6 +150,7 @@ public class ShoppingSystem : MonoBehaviour
     /// <returns></returns>
     public bool Buy(int item)
     {
+        Debug.Log("Yes");
         if (StockDetails_HaveStock[item] == true)
         {
             if (StockSelling_Number[item] > 0)
