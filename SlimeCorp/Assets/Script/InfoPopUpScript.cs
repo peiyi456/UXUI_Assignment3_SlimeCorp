@@ -14,6 +14,8 @@ public class InfoPopUpScript : MonoBehaviour
     [SerializeField] Button leftButton = null, rightButton = null;
     [SerializeField] Camera mainCamera = null;
     public GameObject[] LockPanel;
+    public GameObject[] UnlockButton;
+
 
     [Header("Internal Data")]
     public Vector3 RayPosition = new Vector3(0.5f, 0.55f);
@@ -35,6 +37,7 @@ public class InfoPopUpScript : MonoBehaviour
     public Text[] MaxStorage;
     public Text[] UpgradeCost;
     public Text[] Amount;
+    public Text[] UnlockAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -64,8 +67,10 @@ public class InfoPopUpScript : MonoBehaviour
                 UpgradeCost[i].text = "" + slimeType[i].UpgradeCost[GameManagerScript.LabLevel[i] - 1];
             }
             Amount[i].text = "" + GameManagerScript.SlimeTypeCount[i];
+            UnlockAmount[i].text = slimeType[i].UnlockCost + " G";
         }
 
+        //Update Button Interactable
         if(currentPanelPosition == 0)
         {
             leftButton.interactable = false;
@@ -74,7 +79,6 @@ public class InfoPopUpScript : MonoBehaviour
         {
             leftButton.interactable = true;
         }
-
         if(currentPanelPosition == 3)
         {
             rightButton.interactable = false;
@@ -82,6 +86,19 @@ public class InfoPopUpScript : MonoBehaviour
         else
         {
             rightButton.interactable = true;
+        }
+
+        //Update Unlock Button Interactable
+        for(int i = 0; i < 4; i++)
+        {
+            if(GameManagerScript.TotalCash < slimeType[i].UnlockCost)
+            {
+                UnlockButton[i].GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                UnlockButton[i].GetComponent<Button>().interactable = true;
+            }
         }
     }
 
@@ -115,10 +132,12 @@ public class InfoPopUpScript : MonoBehaviour
             if(GameManagerScript.UnlockLab[i] == false)
             {
                 LockPanel[i].SetActive(true);
+                UnlockButton[i].SetActive(true);
             }
             else
             {
                 LockPanel[i].SetActive(false);
+                UnlockButton[i].SetActive(false);
             }
         }
     }
@@ -165,27 +184,8 @@ public class InfoPopUpScript : MonoBehaviour
         PanelGroup.GetComponent<RectTransform>().anchoredPosition = nextPos;
     }
 
-    int CheckPosition()
+    public void UnlockLabFunction()
     {
-        if(positionRay.y > -8.25f)
-        {
-            return 0;
-        }
-        else if(positionRay.y > -11.565f && positionRay.y <= -8.25f)
-        {
-            return 1;
-        }
-        else if(positionRay.y > -14.875f && positionRay.y <= -11.565f)
-        {
-            return 2;
-        }
-        else if(positionRay.y <= -14.875f)
-        {
-            return 3;
-        }
 
-        return 0;
     }
-
-
 }

@@ -18,9 +18,9 @@ public class CanvasManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackRoomRectLocation = AttackRoomButton.GetComponent<RectTransform>();
-        LeftRectLocation = MarketButton.GetComponent<RectTransform>();
-        RightRectLocation = FactoryButton.GetComponent<RectTransform>();
+        //attackRoomRectLocation = AttackRoomButton.GetComponent<RectTransform>();
+        //LeftRectLocation = MarketButton.GetComponent<RectTransform>();
+        //RightRectLocation = FactoryButton.GetComponent<RectTransform>();
         CameraScript = MainCamera.GetComponent<CameraMovementScript>();
     }
 

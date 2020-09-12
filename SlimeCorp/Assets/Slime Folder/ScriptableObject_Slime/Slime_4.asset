@@ -18,3 +18,4 @@ MonoBehaviour:
   Power: 50
   MaxStorage: f40100008813000000a3e111
   UpgradeCost: 6400000064000000
+  UnlockCost: 10000

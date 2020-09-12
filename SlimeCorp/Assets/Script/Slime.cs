@@ -14,4 +14,5 @@ public class Slime : ScriptableObject
     public int Power;
     public int[] MaxStorage;
     public int[] UpgradeCost;
+    public long UnlockCost;
 }
