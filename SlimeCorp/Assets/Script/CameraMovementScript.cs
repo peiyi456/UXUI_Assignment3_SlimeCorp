@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraMovementScript : MonoBehaviour
 {
     [SerializeField] GameObject SlimeTVScreen;
+    [SerializeField] Button LevelUpButton = null;
+    [SerializeField] Button LevelDownButton = null;
     Camera mainCamera = null;
 
     Vector3 AttackRoomLocation, FactoryLocation, MarketLocation;
+    Vector3[] EachRoomLocation = { new Vector3(0f, 10f, -10f), new Vector3(0f, 0f, -10f), new Vector3(0f, -8.3f, -10f) };
     Vector3 movingLocation;
     public int CameraLocation = 2;
     bool InTransition = false;
-    float elapseTime = 0;
     
-    public float transitionSpeed = 4f;
+    public float transitionSpeed = 1f;
     public float zoomingSpeed = 1f;
 
     private Vector3 touchStart;
@@ -52,6 +55,8 @@ public class CameraMovementScript : MonoBehaviour
             {
                 case 1:
                     {
+                        LevelUpButton.interactable = false;
+                        LevelDownButton.interactable = true;
                         transform.position = new Vector3(
                             Mathf.Clamp(transform.position.x, 0f, 13f),
                             10f,
@@ -60,6 +65,8 @@ public class CameraMovementScript : MonoBehaviour
                     }
                 case 2:
                     {
+                        LevelUpButton.interactable = true;
+                        LevelDownButton.interactable = true;
                         transform.position = new Vector3(
                             Mathf.Clamp(transform.position.x, 0f, 13f),
                             0f,
@@ -68,6 +75,8 @@ public class CameraMovementScript : MonoBehaviour
                     }
                 case 3:
                     {
+                        LevelUpButton.interactable = true;
+                        LevelDownButton.interactable = false;
                         transform.position = new Vector3(
                            Mathf.Clamp(transform.position.x, 0f, 13f),
                            Mathf.Clamp(transform.position.y, -16.4f, -8.3f), 
@@ -80,54 +89,38 @@ public class CameraMovementScript : MonoBehaviour
                     }
             }
         }
-    }
-
-    void LateUpdate()
-    {
-        if(InTransition == true)
+        else
         {
-            elapseTime += Time.deltaTime;
-            if (transform.position != movingLocation)
-            {
-                transform.position = Vector3.Lerp(transform.position, movingLocation, (elapseTime / transitionSpeed));
-            }
-            else
-            {
-                InTransition = false;
-            }
+            LevelUpButton.interactable = false;
+            LevelDownButton.interactable = false;
         }
     }
 
-    public void TowardMarket()
+
+    public void GoingUp()
     {
-        if(CameraLocation != 1)
-        {
-            movingLocation = new Vector3(transform.position.x, MarketLocation.y, MarketLocation.z);
-            InTransition = true;
-            CameraLocation = 1;
-            elapseTime = 0;
-        }
+        CameraLocation--;
+        InTransition = true;
+        StartCoroutine(MovingCameraToward(EachRoomLocation[CameraLocation - 1]));
     }
 
-    public void TowardAttackRoom()
+    public void GoingDown()
     {
-        if (CameraLocation != 2)
-        {
-            movingLocation = new Vector3(transform.position.x, AttackRoomLocation.y, AttackRoomLocation.z); ;
-            InTransition = true;
-            CameraLocation = 2;
-            elapseTime = 0;
-        }
+        CameraLocation++;
+        InTransition = true;
+        StartCoroutine(MovingCameraToward(EachRoomLocation[CameraLocation - 1]));
     }
 
-    public void TowardFactory()
+    IEnumerator MovingCameraToward(Vector3 destination)
     {
-        if (CameraLocation != 3)
+        float elapsedTime = 0;
+        while (elapsedTime <= transitionSpeed)
         {
-            movingLocation = new Vector3(transform.position.x, FactoryLocation.y, FactoryLocation.z); ;
-            InTransition = true;
-            CameraLocation = 3;
-            elapseTime = 0;
+            transform.position = Vector3.Lerp(transform.position, destination, (elapsedTime / transitionSpeed));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
+        transform.position = destination;
+        InTransition = false;
     }
 }

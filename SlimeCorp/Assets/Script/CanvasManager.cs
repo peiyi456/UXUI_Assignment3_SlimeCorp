@@ -6,7 +6,7 @@ public class CanvasManager : MonoBehaviour
 {
     public GameObject MarketButton, FactoryButton, AttackRoomButton, MainCamera, AttackSceneCamera, SlimeTVScreen;
     public GameObject AttackRoom_LabInfoPanel, Market_StockPanel, BottomBar, AttackSystem;
-    public GameObject InfoButton, StockButton;
+    public GameObject InfoButton, StockButton, SlimeTVButton;
     CameraMovementScript CameraScript;
 
     RectTransform attackRoomRectLocation, LeftRectLocation, RightRectLocation;
@@ -29,28 +29,19 @@ public class CanvasManager : MonoBehaviour
     {
         if (CameraScript.CameraLocation == 1)
         {
-            AttackRoomButton.SetActive(true);
-            attackRoomRectLocation.anchorMin = LeftRectLocation.anchorMin;
-            attackRoomRectLocation.anchorMax = LeftRectLocation.anchorMax;
-            attackRoomRectLocation.anchoredPosition = LeftRectLocation.anchoredPosition;
-
+            SlimeTVButton.SetActive(false);
             InfoButton.SetActive(false);
             StockButton.SetActive(true);
         }
         else if (CameraScript.CameraLocation == 2)
         {
-            AttackRoomButton.SetActive(false);
-
-            InfoButton.SetActive(true);
+            SlimeTVButton.SetActive(true);
+            InfoButton.SetActive(false);
             StockButton.SetActive(false);
         }
         else if (CameraScript.CameraLocation == 3)
         {
-            AttackRoomButton.SetActive(true);
-            attackRoomRectLocation.anchorMin = RightRectLocation.anchorMin;
-            attackRoomRectLocation.anchorMax = RightRectLocation.anchorMax;
-            attackRoomRectLocation.anchoredPosition = RightRectLocation.anchoredPosition;
-
+            SlimeTVButton.SetActive(false);
             InfoButton.SetActive(true);
             StockButton.SetActive(false);
         }
@@ -61,8 +52,8 @@ public class CanvasManager : MonoBehaviour
 
         if (CameraScript.CameraLocation == 1)
         {
-            InfoPanelButtonGroup.GetComponent<Animator>().SetTrigger("Close");
-            BlackScene.SetActive(false);
+            //InfoPanelButtonGroup.GetComponent<Animator>().SetTrigger("Close");
+            //BlackScene.SetActive(false);
             Market_StockPanel.SetActive(true);
         }
     }
