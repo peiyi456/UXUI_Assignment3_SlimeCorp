@@ -6,7 +6,6 @@ public class CameraMovementScript : MonoBehaviour
 {
     [SerializeField] GameObject SlimeTVScreen;
     Camera mainCamera = null;
-    [SerializeField] Camera AttackSceneCamera = null;
 
     Vector3 AttackRoomLocation, FactoryLocation, MarketLocation;
     Vector3 movingLocation;
