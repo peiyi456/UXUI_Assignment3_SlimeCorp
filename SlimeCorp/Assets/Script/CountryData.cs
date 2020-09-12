@@ -6,7 +6,10 @@ using UnityEngine;
 public class CountryData : ScriptableObject
 {
     [Header("Country Data")]
+    public long CountryPower;
+    public long[] PowerNeeded;
 
     [Header("Accessing GameObject")]
     public Sprite[] LoadingScreenImage;
+
 }

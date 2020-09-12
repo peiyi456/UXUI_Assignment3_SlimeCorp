@@ -13,7 +13,7 @@ public class GameManagerScript : MonoBehaviour
     public static bool[] UnlockLab = { true, false, false, false};
     public GameObject[] LockLabScreen;
     public static int[] LabLevel = { 1, 1, 1, 1};
-    public static bool[] CountryUnlock = { true, false, false, false };
+    public static bool[] CountryUnlock = { true, true, true, false };
     public static bool[] CountryConquer = { false, false, false, false };
 
     [Header("Access GameObject")]

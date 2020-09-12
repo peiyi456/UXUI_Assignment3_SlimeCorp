@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc37cf047868f814e82e412cae9920a6, type: 3}
   m_Name: AttackText_3
   m_EditorClassIdentifier: 
-  Text: []
+  Text:
+  - The war is on.
+  - My god there are too many of them.
+  - Help...We are trapped...
+  - We wont give up until last second!
+  - We lose.

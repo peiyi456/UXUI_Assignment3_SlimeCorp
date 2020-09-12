@@ -14,6 +14,7 @@ public class AttackSystem : MonoBehaviour
     public GameObject[] ConqueredImage;
     public GameObject[] LockCountry;
     public GameObject[] CountryFlag;
+    public Text[] CountryPowerText;
     [SerializeField] GameObject WarningPanel = null;
     [SerializeField] GameObject DuringAttack_gameObject = null;
     [SerializeField] GameObject LoadingImageGroup = null;
@@ -24,6 +25,7 @@ public class AttackSystem : MonoBehaviour
     public GameObject[] LoadingTextGroup;
     public Text[] LoadingSlimeText;
     public CountryData[] CountryData_s;
+    public AttackingText[] AttackingTexts;
     public GameObject[] Result_image;
     [SerializeField] GameObject ContinueButton = null;
 
@@ -43,6 +45,13 @@ public class AttackSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //update country power text
+        for(int i = 0; i < 3; i++)
+        {
+            CountryPowerText[i].text = "" + CountryData_s[i].CountryPower;
+        }
+        
+
         //Left & Right button interaction
         if (currentFlagGroup == 0)
         {
@@ -169,13 +178,34 @@ public class AttackSystem : MonoBehaviour
             GameManagerScript.SlimeTypeCount[i] = 0;
         }
 
-        if (currentSlimePower > 10)
+        if (currentSlimePower > CountryData_s[currentFlagGroup].PowerNeeded[0])
         {
             WinBattle = true;
             GameManagerScript.CountryConquer[currentFlagGroup] = true;
-        }
-        //calculate more detail for more condition
 
+            if(currentSlimePower >= CountryData_s[currentFlagGroup].PowerNeeded[3])
+            {
+                for(int i = 0; i < 5; i++)
+                {
+                    LoadingSlimeText[i].text = "" + AttackingTexts[0].Text[i];
+                }
+            }
+            else if(currentSlimePower >= CountryData_s[currentFlagGroup].PowerNeeded[2])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    LoadingSlimeText[i].text = "" + AttackingTexts[1].Text[i];
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    LoadingSlimeText[i].text = "" + AttackingTexts[2].Text[i];
+                }
+            }
+        }
+        
         for(int i = 0; i < 3; i++)
         {
             LoadingImage[i].GetComponent<Image>().sprite = CountryData_s[currentFlagGroup].LoadingScreenImage[i];
