@@ -4912,6 +4912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlimeTVScreen: {fileID: 1734610841}
+  AttackSceneCamera: {fileID: 1567822858}
   CameraLocation: 2
   transitionSpeed: 5
   zoomingSpeed: 1

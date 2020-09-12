@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraMovementScript : MonoBehaviour
 {
     [SerializeField] GameObject SlimeTVScreen;
+    Camera mainCamera = null;
+    [SerializeField] Camera AttackSceneCamera = null;
 
     Vector3 AttackRoomLocation, FactoryLocation, MarketLocation;
     Vector3 movingLocation;
@@ -20,6 +22,8 @@ public class CameraMovementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GetComponent<Camera>();
+
         AttackRoomLocation = new Vector3(0f, 0f, -10f);
         FactoryLocation = new Vector3(0f, -8.3f, -10f);
         MarketLocation = new Vector3(0f, 10f, -10f);
@@ -153,5 +157,8 @@ public class CameraMovementScript : MonoBehaviour
             this.GetComponent<Camera>().orthographicSize -= Time.deltaTime * 4f;
             yield return new WaitForEndOfFrame();
         }
+
+        this.GetComponent<Camera>().enabled = false;
+        AttackSceneCamera.enabled = true;
     }
 }
