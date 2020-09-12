@@ -7,7 +7,6 @@ public class ShoppingSystem : MonoBehaviour
 {
     [Header("Stock Button")]
     public Button[] StockButton;
-    //public Image[] StockButton_Image;
 
     [Header("SlimeTypeQuantity")]
     public Text[] SlimeTypeQuantity_Text;
@@ -60,23 +59,6 @@ public class ShoppingSystem : MonoBehaviour
             StockSelling_Text[i].text = StockSelling_Number[i].ToString("n0");
             StockSellingPrice_Text[i].text = StockSellingPrice_Number[i].ToString("n0") + " " + "G";
             RestockCost_Text[i].text = RestockCost_SlimeTypeCount[i].ToString("n0") + " " + SlimeType[i];
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Buy(0);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Buy(1);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Buy(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Buy(3);
         }
     }
 
