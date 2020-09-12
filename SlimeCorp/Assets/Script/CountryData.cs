@@ -8,6 +8,7 @@ public class CountryData : ScriptableObject
     [Header("Country Data")]
     public long CountryPower;
     public long[] PowerNeeded;
+    public long EarnPerSecond;
 
     [Header("Accessing GameObject")]
     public Sprite[] LoadingScreenImage;

@@ -182,7 +182,7 @@ public class AttackSystem : MonoBehaviour
         if (currentSlimePower > CountryData_s[currentFlagGroup].PowerNeeded[0])
         {
             WinBattle = true;
-            GameManagerScript.CountryConquer[currentFlagGroup] = true;
+            GameManagerScript.CountryUnlock[currentFlagGroup + 1] = true;
         }
 
         //Special Win Condition
@@ -225,9 +225,17 @@ public class AttackSystem : MonoBehaviour
 
         //Set random slime pic
         int[] indexArray = new int[5];
+        int SlimeUnlock = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if(GameManagerScript.UnlockLab[i] == true)
+            {
+                SlimeUnlock++;
+            }
+        }
         for(int i = 0; i < 5; i++)
         {
-            indexArray[i] = Random.Range(0, 4);
+            indexArray[i] = Random.Range(0, SlimeUnlock);
         }
         //Start attacking
         StartCoroutine(AttackProcess(indexArray, WinBattle));
@@ -294,6 +302,7 @@ public class AttackSystem : MonoBehaviour
         if(WinBattle)
         {
             Result_image[0].SetActive(true);
+            GameManagerScript.CountryConquer[currentFlagGroup] = true;
         }
         else
         {

@@ -13598,6 +13598,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a1f37e8475dfe724f86831bfb536a4f3, type: 2}
   - {fileID: 11400000, guid: 6be831eb28581404383362ba854e70e7, type: 2}
   - {fileID: 11400000, guid: fa195d5ce28539e41baf4188b6299f27, type: 2}
+  CountryData_s:
+  - {fileID: 11400000, guid: c7edee31f9c8b924daf64ae84151dc5b, type: 2}
+  - {fileID: 11400000, guid: f8420719c13ae804fac1c3dededee68f, type: 2}
+  - {fileID: 11400000, guid: d885d88f453318948a865248af434395, type: 2}
 --- !u!4 &1387686434
 Transform:
   m_ObjectHideFlags: 0
