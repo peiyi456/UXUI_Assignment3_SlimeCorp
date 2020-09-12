@@ -8,6 +8,7 @@ public class CameraMovementScript : MonoBehaviour
     Vector3 movingLocation;
     public int CameraLocation = 2;
     bool InTransition = false;
+    float elapseTime = 0;
 
     public float transitionSpeed = 4f;
 
@@ -72,14 +73,15 @@ public class CameraMovementScript : MonoBehaviour
     {
         if(InTransition == true)
         {
-                if(transform.position != movingLocation)
-                {
-                    transform.position = Vector3.Lerp(transform.position, movingLocation, transitionSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    InTransition = false;
-                }
+            elapseTime += Time.deltaTime;
+            if (transform.position != movingLocation)
+            {
+                transform.position = Vector3.Lerp(transform.position, movingLocation, (elapseTime / transitionSpeed));
+            }
+            else
+            {
+                InTransition = false;
+            }
         }
     }
 
@@ -87,9 +89,10 @@ public class CameraMovementScript : MonoBehaviour
     {
         if(CameraLocation != 1)
         {
-            movingLocation = MarketLocation;
+            movingLocation = new Vector3(transform.position.x, MarketLocation.y, MarketLocation.z);
             InTransition = true;
             CameraLocation = 1;
+            elapseTime = 0;
         }
     }
 
@@ -97,9 +100,10 @@ public class CameraMovementScript : MonoBehaviour
     {
         if (CameraLocation != 2)
         {
-            movingLocation = AttackRoomLocation;
+            movingLocation = new Vector3(transform.position.x, AttackRoomLocation.y, AttackRoomLocation.z); ;
             InTransition = true;
             CameraLocation = 2;
+            elapseTime = 0;
         }
     }
 
@@ -107,9 +111,10 @@ public class CameraMovementScript : MonoBehaviour
     {
         if (CameraLocation != 3)
         {
-            movingLocation = FactoryLocation;
+            movingLocation = new Vector3(transform.position.x, FactoryLocation.y, FactoryLocation.z); ;
             InTransition = true;
             CameraLocation = 3;
+            elapseTime = 0;
         }
     }
 }

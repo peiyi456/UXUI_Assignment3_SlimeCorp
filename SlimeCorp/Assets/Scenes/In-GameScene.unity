@@ -4912,7 +4912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraLocation: 2
-  transitionSpeed: 4
+  transitionSpeed: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -11871,6 +11871,7 @@ GameObject:
   - component: {fileID: 1256564815}
   - component: {fileID: 1256564814}
   - component: {fileID: 1256564813}
+  - component: {fileID: 1256564817}
   m_Layer: 8
   m_Name: SlimeTV
   m_TagString: Untagged
@@ -12009,6 +12010,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1256564817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256564811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7b600f14313f342bed743757f31f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 519420028}
 --- !u!1 &1271654761
 GameObject:
   m_ObjectHideFlags: 0
