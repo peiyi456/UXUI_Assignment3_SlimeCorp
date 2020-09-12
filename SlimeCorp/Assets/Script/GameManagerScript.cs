@@ -6,19 +6,21 @@ using UnityEngine.UI;
 public class GameManagerScript : MonoBehaviour
 {
     [Header("Internal Data")]
-    public long TotalSlimePower = 0;
+    public static long TotalSlimePower = 0;
     public static long TotalCash = 0;
     public static int[] SlimeTypeCount = { 0, 0, 0, 0 };
     public static int[] SlimeTypeForAttackRoom = { 0, 0, 0, 0 };
-    public static bool[] UnlockLab = { true, false, false, false};
-    public GameObject[] LockLabScreen;
+    public static bool[] UnlockLab = { true, false, false, false };
     public static int[] LabLevel = { 1, 1, 1, 1};
+    public static bool[] CountryUnlock = { true, false, false, false };
+    public static bool[] CountryConquer = { false, false, false, false };
 
     [Header("Access GameObject")]
     public Text text_totalPower;
     public Text text_totalCash;
     public Slime[] slimeType;
-
+    public GameObject[] LockLabScreen;
+    
     // Start is called before the first frame update
     void Start()
     {
