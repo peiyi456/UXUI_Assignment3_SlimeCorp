@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wrestler
   image: {fileID: 0}
-  preferChoice: 1
+  preferChoice: 2
   animatorController: {fileID: 9100000, guid: d1c9e82db6e1d734bb54e8c12fed151d, type: 2}
