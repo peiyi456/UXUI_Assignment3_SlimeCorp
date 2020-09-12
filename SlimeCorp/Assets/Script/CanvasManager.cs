@@ -10,6 +10,8 @@ public class CanvasManager : MonoBehaviour
 
     RectTransform attackRoomRectLocation, LeftRectLocation, RightRectLocation;
 
+    public GameObject InfoPanelButtonGroup, BlackScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,8 @@ public class CanvasManager : MonoBehaviour
 
         else if (CameraScript.CameraLocation == 1)
         {
+            InfoPanelButtonGroup.GetComponent<Animator>().SetTrigger("Close");
+            BlackScene.SetActive(false);
             Market_StockPanel.SetActive(true);
         }
     }
