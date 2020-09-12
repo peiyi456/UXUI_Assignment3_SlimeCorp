@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CameraMovementScript : MonoBehaviour
 {
+    [SerializeField] GameObject SlimeTVScreen;
+
     Vector3 AttackRoomLocation, FactoryLocation, MarketLocation;
     Vector3 movingLocation;
     public int CameraLocation = 2;
     bool InTransition = false;
     float elapseTime = 0;
-
+    
     public float transitionSpeed = 4f;
+    public float zoomingSpeed = 1f;
 
     private Vector3 touchStart;
 
@@ -27,6 +30,11 @@ public class CameraMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("space"))
+        {
+            TowardSlimeTv();
+        }
+
         if(InTransition == false)
         {
             if (Input.GetMouseButtonDown(0))
@@ -63,6 +71,10 @@ public class CameraMovementScript : MonoBehaviour
                            Mathf.Clamp(transform.position.x, 0f, 13f),
                            Mathf.Clamp(transform.position.y, -16.4f, -8.3f), 
                            transform.position.z);
+                        break;
+                    }
+                default:
+                    {
                         break;
                     }
             }
@@ -115,6 +127,31 @@ public class CameraMovementScript : MonoBehaviour
             InTransition = true;
             CameraLocation = 3;
             elapseTime = 0;
+        }
+    }
+
+    public void TowardSlimeTv()
+    {
+        CameraLocation = 4;
+        StartCoroutine(ZoomingIntoTV(zoomingSpeed));
+    }
+
+    IEnumerator ZoomingIntoTV(float zoomingSpeed)
+    {
+        float tempElapseTime = 0;
+        Vector3 destination = new Vector3(SlimeTVScreen.transform.position.x, SlimeTVScreen.transform.position.y, -10f);
+        while (tempElapseTime <= zoomingSpeed)
+        {
+            transform.position = Vector3.Lerp(transform.position, destination, (tempElapseTime / zoomingSpeed));
+            tempElapseTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        transform.position = destination;
+
+        while(this.GetComponent<Camera>().orthographicSize > 0.9)
+        {
+            this.GetComponent<Camera>().orthographicSize -= Time.deltaTime * 4f;
+            yield return new WaitForEndOfFrame();
         }
     }
 }
