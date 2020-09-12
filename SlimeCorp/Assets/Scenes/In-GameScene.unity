@@ -10763,7 +10763,7 @@ PrefabInstance:
     - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
         type: 3}
       propertyPath: AttackingTexts.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
         type: 3}
@@ -10820,6 +10820,17 @@ PrefabInstance:
       propertyPath: CountryPowerText.Array.data[3]
       value: 
       objectReference: {fileID: 596248299}
+    - target: {fileID: 6887413711596890254, guid: db3d2f05ebb95964c94bbdf8c792fef3,
+        type: 3}
+      propertyPath: AttackingTexts.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: d226c2f90051fef4d9ac6dd17806f988,
+        type: 2}
+    - target: {fileID: 6887413712453734506, guid: db3d2f05ebb95964c94bbdf8c792fef3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6887413712782581645, guid: db3d2f05ebb95964c94bbdf8c792fef3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

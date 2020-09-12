@@ -178,45 +178,58 @@ public class AttackSystem : MonoBehaviour
             GameManagerScript.SlimeTypeCount[i] = 0;
         }
 
+        //Calculate result
         if (currentSlimePower > CountryData_s[currentFlagGroup].PowerNeeded[0])
         {
             WinBattle = true;
             GameManagerScript.CountryConquer[currentFlagGroup] = true;
+        }
 
-            if(currentSlimePower >= CountryData_s[currentFlagGroup].PowerNeeded[3])
+        //Special Win Condition
+        if(currentSlimePower >= CountryData_s[currentFlagGroup].PowerNeeded[0])
+        {
+            for (int i = 0; i < 5; i++)
             {
-                for(int i = 0; i < 5; i++)
-                {
-                    LoadingSlimeText[i].text = "" + AttackingTexts[0].Text[i];
-                }
-            }
-            else if(currentSlimePower >= CountryData_s[currentFlagGroup].PowerNeeded[2])
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    LoadingSlimeText[i].text = "" + AttackingTexts[1].Text[i];
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    LoadingSlimeText[i].text = "" + AttackingTexts[2].Text[i];
-                }
+                LoadingSlimeText[i].text = "" + AttackingTexts[0].Text[i];
             }
         }
-        
-        for(int i = 0; i < 3; i++)
+        else if(currentSlimePower >= CountryData_s[currentFlagGroup].PowerNeeded[1])
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                LoadingSlimeText[i].text = "" + AttackingTexts[1].Text[i];
+            }
+        }
+        else if(currentSlimePower >= CountryData_s[currentFlagGroup].PowerNeeded[2])
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                LoadingSlimeText[i].text = "" + AttackingTexts[2].Text[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                LoadingSlimeText[i].text = "" + AttackingTexts[3].Text[i];
+            }
+        }
+
+        //Country Loading Image
+        for (int i = 0; i < 3; i++)
         {
             LoadingImage[i].GetComponent<Image>().sprite = CountryData_s[currentFlagGroup].LoadingScreenImage[i];
         }
         
-        LoadingBar.value = 0;
+        LoadingBar.value = 0; //reset bar value
+
+        //Set random slime pic
         int[] indexArray = new int[5];
         for(int i = 0; i < 5; i++)
         {
             indexArray[i] = Random.Range(0, 4);
         }
+        //Start attacking
         StartCoroutine(AttackProcess(indexArray, WinBattle));
     }
 
