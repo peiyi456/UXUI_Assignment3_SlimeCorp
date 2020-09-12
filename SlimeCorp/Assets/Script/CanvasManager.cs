@@ -6,9 +6,12 @@ public class CanvasManager : MonoBehaviour
 {
     public GameObject MarketButton, FactoryButton, AttackRoomButton, MainCamera;
     public GameObject AttackRoom_LabInfoPanel, Market_StockPanel;
+    public GameObject InfoButton, StockButton;
     CameraMovementScript CameraScript;
 
     RectTransform attackRoomRectLocation, LeftRectLocation, RightRectLocation;
+
+    public GameObject InfoPanelButtonGroup, BlackScene;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +31,16 @@ public class CanvasManager : MonoBehaviour
             attackRoomRectLocation.anchorMin = LeftRectLocation.anchorMin;
             attackRoomRectLocation.anchorMax = LeftRectLocation.anchorMax;
             attackRoomRectLocation.anchoredPosition = LeftRectLocation.anchoredPosition;
+
+            InfoButton.SetActive(false);
+            StockButton.SetActive(true);
         }
         else if (CameraScript.CameraLocation == 2)
         {
             AttackRoomButton.SetActive(false);
+
+            InfoButton.SetActive(true);
+            StockButton.SetActive(false);
         }
         else if (CameraScript.CameraLocation == 3)
         {
@@ -39,18 +48,19 @@ public class CanvasManager : MonoBehaviour
             attackRoomRectLocation.anchorMin = RightRectLocation.anchorMin;
             attackRoomRectLocation.anchorMax = RightRectLocation.anchorMax;
             attackRoomRectLocation.anchoredPosition = RightRectLocation.anchoredPosition;
+
+            InfoButton.SetActive(true);
+            StockButton.SetActive(false);
         }
     }
 
-    public void ChangingPanelFunction()
+    public void OpenStockPanel()
     {
-        if (CameraScript.CameraLocation == 3)
-        {
-            AttackRoom_LabInfoPanel.SetActive(true);
-        }
 
-        else if (CameraScript.CameraLocation == 1)
+        if (CameraScript.CameraLocation == 1)
         {
+            InfoPanelButtonGroup.GetComponent<Animator>().SetTrigger("Close");
+            BlackScene.SetActive(false);
             Market_StockPanel.SetActive(true);
         }
     }

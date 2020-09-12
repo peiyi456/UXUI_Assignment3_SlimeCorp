@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Kindergartener
   image: {fileID: 0}
-  preferChoice: 1
+  preferChoice: 2
   animatorController: {fileID: 9100000, guid: b6877c875dbebba4cb13cb97fdd74143, type: 2}

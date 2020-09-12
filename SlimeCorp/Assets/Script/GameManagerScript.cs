@@ -10,7 +10,8 @@ public class GameManagerScript : MonoBehaviour
     public static long TotalCash = 0;
     public static int[] SlimeTypeCount = { 0, 0, 0, 0 };
     public static int[] SlimeTypeForAttackRoom = { 0, 0, 0, 0 };
-    public static bool[] UnlockLab = { true, false, false, false };
+    public static bool[] UnlockLab = { true, false, false, false};
+    public GameObject[] LockLabScreen;
     public static int[] LabLevel = { 1, 1, 1, 1};
     public static bool[] CountryUnlock = { true, false, false, false };
     public static bool[] CountryConquer = { false, false, false, false };
@@ -19,8 +20,7 @@ public class GameManagerScript : MonoBehaviour
     public Text text_totalPower;
     public Text text_totalCash;
     public Slime[] slimeType;
-    public GameObject[] LockLabScreen;
-    
+
     // Start is called before the first frame update
     void Start()
     {
