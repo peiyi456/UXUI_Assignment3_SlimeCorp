@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Idol
   image: {fileID: 0}
-  preferChoice: 3
+  preferChoice: 1
   animatorController: {fileID: 9100000, guid: 41f96a10459ba6747947988cdd04b741, type: 2}
