@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip BGmusic, AttackBG, WinBG, LoseBG;
+    public static AudioClip BGmusic, AttackBG, WinBG, LoseBG, pewSound;
     static AudioSource audioSrc;
 
     // Start is called before the first frame update

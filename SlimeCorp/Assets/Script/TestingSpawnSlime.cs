@@ -14,6 +14,8 @@ public class TestingSpawnSlime : MonoBehaviour
     public GameObject[] AtkRoomArray;
     public GameObject[] AtkRoomSpawnLocation;
     public PlayableDirector timeline;
+    public AudioSource audiosrc;
+    public AudioClip pewSound;
 
     [Header("Balancing Use")]
     int[,] SlimeCount_lab_attackRoom = new int[,] { { 0, 0 }, { 25, 5 }, { 30, 10 }, { 50, 20 }, { 100, 30 }, { 200, 40 } };
@@ -53,10 +55,11 @@ public class TestingSpawnSlime : MonoBehaviour
         if(SpawnAtLab)
         {
             float RandomX = Random.Range(2f, 35f);
-            float RandomY = Random.Range(0.5f, 3f);
+            float RandomY = Random.Range(0.5f, 3f); 
             spawnedSlime.transform.parent = LabArray[i].transform;
             GameManagerScript.SlimeTypeCount[i] += 1 * GameManagerScript.LabLevel[i];
             spawnedSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomX, RandomY), ForceMode2D.Impulse);
+            audiosrc.PlayOneShot(pewSound);
         }
         else
         {
