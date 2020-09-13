@@ -8,6 +8,9 @@ public class ShoppingSystem : MonoBehaviour
     [Header("Stock Button")]
     public Button[] StockButton;
 
+    [Header("Access GameObject")]
+    public GameObject warningSign;
+
     [Header("SlimeTypeQuantity")]
     public Text[] SlimeTypeQuantity_Text;
 
@@ -15,8 +18,11 @@ public class ShoppingSystem : MonoBehaviour
     public GameObject[] StockDetails_HaveStock;
     public Slider[] StockSelling_Bar;
     public Text[] StockSelling_Text;
-    [SerializeField] int[] StockSelling_Number = { 0, 0, 0, 0 }; // save
-    [SerializeField] bool[] StillHaveStock = { false, false, false, false }; // save
+
+
+    //[SerializeField] int[] StockSelling_Number = { 0, 0, 0, 0 }; // save
+    //[SerializeField] bool[] StillHaveStock = { false, false, false, false }; // save
+
 
     [SerializeField] int[] MaxStock_Number = { 500, 1000, 1500, 2000 };
     public Text[] StockSellingPrice_Text;
@@ -37,8 +43,6 @@ public class ShoppingSystem : MonoBehaviour
         {
             StockButton[i].gameObject.SetActive(false);
         }
-
-
     }
 
     // Update is called once per frame
@@ -57,7 +61,7 @@ public class ShoppingSystem : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            StockSelling_Text[i].text = StockSelling_Number[i].ToString("n0");
+            StockSelling_Text[i].text = GameManagerScript.StockSelling_Number[i].ToString("n0");
             StockSellingPrice_Text[i].text = StockSellingPrice_Number[i].ToString("n0") + " " + "G";
             RestockCost_Text[i].text = RestockCost_SlimeTypeCount[i].ToString("n0") + " " + SlimeType[i];
         }
@@ -92,22 +96,24 @@ public class ShoppingSystem : MonoBehaviour
         {
             if (GameManagerScript.UnlockLab[i] == true)
             {
-                if (StockSelling_Number[i] > 0)
+                if (GameManagerScript.StockSelling_Number[i] > 0)
                 {
-                    StillHaveStock[i] = true;
+                    GameManagerScript.StillHaveStock[i] = true;
                     StockButton[i].image.color = new Color(1, 0.9215f, 0.6039f);
                     StockButton[i].interactable = false;
                     StockDetails_HaveStock[i].SetActive(true);
                     StockDetails_OutOfStock[i].SetActive(false);
+                    warningSign.SetActive(false);
                     //Debug.Log("HaveStock");
                 }
                 else
                 {
-                    StillHaveStock[i] = false;
+                    GameManagerScript.StillHaveStock[i] = false;
                     StockButton[i].image.color = new Color(1, 0.7568f, 0.2745f);
                     StockButton[i].interactable = true;
                     StockDetails_HaveStock[i].SetActive(false);
                     StockDetails_OutOfStock[i].SetActive(true);
+                    warningSign.SetActive(true);
                     //Debug.Log("NoStock");
                 }
             }
@@ -119,17 +125,17 @@ public class ShoppingSystem : MonoBehaviour
     /// </summary>
     public void Restock(int buttonIndex)
     {
-        if(StillHaveStock[buttonIndex] == false)
+        if(GameManagerScript.StillHaveStock[buttonIndex] == false)
         {
-            if (StockSelling_Number[buttonIndex] <= 0)
+            if (GameManagerScript.StockSelling_Number[buttonIndex] <= 0)
             {
                 if (GameManagerScript.SlimeTypeCount[buttonIndex] >= RestockCost_SlimeTypeCount[buttonIndex])
                 {
                     GameManagerScript.SlimeTypeCount[buttonIndex] -= RestockCost_SlimeTypeCount[buttonIndex];
-                    StockSelling_Number[buttonIndex] = MaxStock_Number[buttonIndex];
+                    GameManagerScript.StockSelling_Number[buttonIndex] = MaxStock_Number[buttonIndex];
                     StockSelling_Bar[buttonIndex].maxValue = MaxStock_Number[buttonIndex];
                     StockSelling_Bar[buttonIndex].value = MaxStock_Number[buttonIndex];
-                    StillHaveStock[buttonIndex] = true;
+                    GameManagerScript.StillHaveStock[buttonIndex] = true;
                 }
             }
         }
@@ -143,7 +149,6 @@ public class ShoppingSystem : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-
             SlimeTypeQuantity_Text[i].text = GameManagerScript.SlimeTypeCount[i].ToString("n0");
         }
     }
@@ -159,9 +164,9 @@ public class ShoppingSystem : MonoBehaviour
         {
             if (StockDetails_HaveStock[item - i] == true)
             {
-                if(StockSelling_Number[item - i] > 0)
+                if(GameManagerScript.StockSelling_Number[item - i] > 0)
                 {
-                    StockSelling_Number[item]--;
+                    GameManagerScript.StockSelling_Number[item]--;
                     StockSelling_Bar[item].value--;
                     GameManagerScript.TotalCash += StockSellingPrice_Number[item];
                     i = 4;

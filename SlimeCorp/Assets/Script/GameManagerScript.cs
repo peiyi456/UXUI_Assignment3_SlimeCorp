@@ -16,6 +16,8 @@ public class GameManagerScript : MonoBehaviour
     public static int[] LabLevel = { 1, 1, 1, 1};
     public static bool[] CountryUnlock = { true, false, false, false };
     public static bool[] CountryConquer = { false, false, false, false };
+    public static int[] StockSelling_Number = { 0, 0, 0, 0 };
+    public static bool[] StillHaveStock = { false, false, false, false };
 
     [Header("Access GameObject")]
     public Text text_totalPower;
