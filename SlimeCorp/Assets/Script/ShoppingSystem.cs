@@ -70,6 +70,7 @@ public class ShoppingSystem : MonoBehaviour
             StockSelling_Bar[i].value = GameManagerScript.StockSelling_Number[i];
             //Debug.Log("Stock Selling Number" + GameManagerScript.StockSelling_Number[i] + "Bar" + (i));
             //Debug.Log("Bar Value" + StockSelling_Bar[i].value + "Bar" + (i));
+            StockSelling_Bar[i].maxValue = MaxStock_Number[i];
         }
     }
 
@@ -151,7 +152,7 @@ public class ShoppingSystem : MonoBehaviour
                 {
                     GameManagerScript.SlimeTypeCount[buttonIndex] -= RestockCost_SlimeTypeCount[buttonIndex];
                     GameManagerScript.StockSelling_Number[buttonIndex] = MaxStock_Number[buttonIndex];
-                    StockSelling_Bar[buttonIndex].maxValue = MaxStock_Number[buttonIndex];
+                    //StockSelling_Bar[buttonIndex].maxValue = MaxStock_Number[buttonIndex];
                     //StockSelling_Bar[buttonIndex].value = MaxStock_Number[buttonIndex];
                     GameManagerScript.StillHaveStock[buttonIndex] = true;
                 }
