@@ -15,7 +15,9 @@ public class ShoppingSystem : MonoBehaviour
     public GameObject[] StockDetails_HaveStock;
     public Slider[] StockSelling_Bar;
     public Text[] StockSelling_Text;
-    [SerializeField] int[] StockSelling_Number = { 0, 0, 0, 0 };
+    [SerializeField] int[] StockSelling_Number = { 0, 0, 0, 0 }; // save
+    [SerializeField] bool[] StillHaveStock = { false, false, false, false }; // save
+
     [SerializeField] int[] MaxStock_Number = { 500, 1000, 1500, 2000 };
     public Text[] StockSellingPrice_Text;
     [SerializeField] int[] StockSellingPrice_Number = { 10, 15, 35, 50 };
@@ -50,7 +52,6 @@ public class ShoppingSystem : MonoBehaviour
         {
             int closureIndex = i;
             StockButton[closureIndex].onClick.AddListener(() => Restock(closureIndex));
-
         }
 
 
@@ -93,6 +94,7 @@ public class ShoppingSystem : MonoBehaviour
             {
                 if (StockSelling_Number[i] > 0)
                 {
+                    StillHaveStock[i] = true;
                     StockButton[i].image.color = new Color(1, 0.9215f, 0.6039f);
                     StockButton[i].interactable = false;
                     StockDetails_HaveStock[i].SetActive(true);
@@ -101,6 +103,7 @@ public class ShoppingSystem : MonoBehaviour
                 }
                 else
                 {
+                    StillHaveStock[i] = false;
                     StockButton[i].image.color = new Color(1, 0.7568f, 0.2745f);
                     StockButton[i].interactable = true;
                     StockDetails_HaveStock[i].SetActive(false);
@@ -116,18 +119,20 @@ public class ShoppingSystem : MonoBehaviour
     /// </summary>
     public void Restock(int buttonIndex)
     {
-
-        if (StockSelling_Number[buttonIndex] <= 0)
+        if(StillHaveStock[buttonIndex] == false)
         {
-            if (GameManagerScript.SlimeTypeCount[buttonIndex] >= RestockCost_SlimeTypeCount[buttonIndex])
+            if (StockSelling_Number[buttonIndex] <= 0)
             {
-                GameManagerScript.SlimeTypeCount[buttonIndex] -= RestockCost_SlimeTypeCount[buttonIndex];
-                StockSelling_Number[buttonIndex] = MaxStock_Number[buttonIndex];
-                StockSelling_Bar[buttonIndex].maxValue = MaxStock_Number[buttonIndex];
-                StockSelling_Bar[buttonIndex].value = MaxStock_Number[buttonIndex];
+                if (GameManagerScript.SlimeTypeCount[buttonIndex] >= RestockCost_SlimeTypeCount[buttonIndex])
+                {
+                    GameManagerScript.SlimeTypeCount[buttonIndex] -= RestockCost_SlimeTypeCount[buttonIndex];
+                    StockSelling_Number[buttonIndex] = MaxStock_Number[buttonIndex];
+                    StockSelling_Bar[buttonIndex].maxValue = MaxStock_Number[buttonIndex];
+                    StockSelling_Bar[buttonIndex].value = MaxStock_Number[buttonIndex];
+                    StillHaveStock[buttonIndex] = true;
+                }
             }
         }
-
     }
 
     /// <summary>

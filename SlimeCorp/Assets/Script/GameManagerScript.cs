@@ -11,7 +11,7 @@ public class GameManagerScript : MonoBehaviour
     private float GameTimer = 0;
     public static int[] SlimeTypeCount = { 0, 0, 0, 0 };
     public static int[] SlimeTypeForAttackRoom = { 0, 0, 0, 0 };
-    public static bool[] UnlockLab = { true, false, false, false};
+    public static bool[] UnlockLab = { true, true, false, false};
     public GameObject[] LockLabScreen;
     public static int[] LabLevel = { 1, 1, 1, 1};
     public static bool[] CountryUnlock = { true, false, false, false };
