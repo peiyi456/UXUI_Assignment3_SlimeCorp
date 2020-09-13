@@ -330,5 +330,6 @@ public class AttackSystem : MonoBehaviour
         FlagGroup.SetActive(true);
         ButtonGroup.SetActive(true);
         DuringAttack_gameObject.SetActive(false);
+        SoundManager.playAttackMusic();
     }
 }

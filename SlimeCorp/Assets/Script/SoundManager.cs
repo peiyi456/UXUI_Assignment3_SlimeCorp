@@ -33,10 +33,12 @@ public class SoundManager : MonoBehaviour
     public static void playWinMusic()
     {
         audioSrc.clip = WinBG;
+        audioSrc.Play();
     }
 
     public static void playLossMusic()
     {
         audioSrc.clip = LoseBG;
+        audioSrc.Play();
     }
 }
