@@ -10,6 +10,7 @@ public class ShoppingSystem : MonoBehaviour
 
     [Header("Access GameObject")]
     public GameObject warningSign;
+    public GameObject warningSignTextBox;
 
     [Header("SlimeTypeQuantity")]
     public Text[] SlimeTypeQuantity_Text;
@@ -92,6 +93,7 @@ public class ShoppingSystem : MonoBehaviour
     /// </summary>
     public void CheckingStockCondition()
     {
+        int StockThatRunOut = 0;
         for (int i = 0; i < 4; i++)
         {
             if (GameManagerScript.UnlockLab[i] == true)
@@ -103,7 +105,6 @@ public class ShoppingSystem : MonoBehaviour
                     StockButton[i].interactable = false;
                     StockDetails_HaveStock[i].SetActive(true);
                     StockDetails_OutOfStock[i].SetActive(false);
-                    warningSign.SetActive(false);
                     //Debug.Log("HaveStock");
                 }
                 else
@@ -113,10 +114,24 @@ public class ShoppingSystem : MonoBehaviour
                     StockButton[i].interactable = true;
                     StockDetails_HaveStock[i].SetActive(false);
                     StockDetails_OutOfStock[i].SetActive(true);
-                    warningSign.SetActive(true);
+                    StockThatRunOut++;
                     //Debug.Log("NoStock");
                 }
             }
+            else
+            {
+                StockThatRunOut++;
+            }
+        }
+
+        if(StockThatRunOut >= 4)
+        {
+            warningSign.SetActive(true);
+        }
+        else
+        {
+            warningSign.SetActive(false);
+            warningSignTextBox.SetActive(false);
         }
     }
 
@@ -166,15 +181,25 @@ public class ShoppingSystem : MonoBehaviour
             {
                 if(GameManagerScript.StockSelling_Number[item - i] > 0)
                 {
-                    GameManagerScript.StockSelling_Number[item]--;
-                    StockSelling_Bar[item].value--;
-                    GameManagerScript.TotalCash += StockSellingPrice_Number[item];
+                    GameManagerScript.StockSelling_Number[item - i]--;
+                    StockSelling_Bar[item - i].value--;
+                    GameManagerScript.TotalCash += StockSellingPrice_Number[item - i];
                     i = 4;
                     return true;
+                }
+
+                if((item - i) == 0)
+                {
+                    i = 4;
                 }
             }
         }
 
         return false;
+    }
+
+    public void WarningSignTextBox()
+    {
+        warningSignTextBox.SetActive(!warningSignTextBox.activeSelf);
     }
 }

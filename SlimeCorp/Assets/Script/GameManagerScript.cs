@@ -7,11 +7,12 @@ public class GameManagerScript : MonoBehaviour
 {
     [Header("Internal Data")]
     public static long TotalSlimePower = 0;
-    public static long TotalCash = 5000;
+    public static long TotalCash = 0;
     private float GameTimer = 0;
+    private float SaveGameTimer = 0;
     public static int[] SlimeTypeCount = { 0, 0, 0, 0 };
     public static int[] SlimeTypeForAttackRoom = { 0, 0, 0, 0 };
-    public static bool[] UnlockLab = { true, true, false, false};
+    public static bool[] UnlockLab = { true, false, false, false};
     public GameObject[] LockLabScreen;
     public static int[] LabLevel = { 1, 1, 1, 1};
     public static bool[] CountryUnlock = { true, false, false, false };
@@ -40,7 +41,8 @@ public class GameManagerScript : MonoBehaviour
             TotalSlimePower += SlimeTypeCount[i] * slimeType[i].Power;
         }
         GameTimer += Time.deltaTime;
-        if(GameTimer >= 1f)
+        SaveGameTimer += Time.deltaTime;
+        if (GameTimer >= 1f)
         {
             for(int i = 0; i < 3; i++)
             {
@@ -50,6 +52,10 @@ public class GameManagerScript : MonoBehaviour
                 }
             }
             GameTimer = 0;
+        }
+        if(SaveGameTimer >= 5f)
+        {
+            SaveData();
         }
         
         text_totalPower.text = "" + TotalSlimePower;
@@ -66,5 +72,32 @@ public class GameManagerScript : MonoBehaviour
                 LockLabScreen[i].SetActive(false);
             }
         }
+
+        if (Input.GetKeyDown("space"))
+        {
+            LoadData();
+        }
+    }
+
+    public void SaveData()
+    {
+        SaveSystem.SavePlayer();
+    }
+
+    public void LoadData()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        TotalSlimePower = data.TotalSlimePower;
+        TotalCash = data.TotalCash;
+
+        SlimeTypeCount = data.SlimeTypeCount;
+        SlimeTypeForAttackRoom = data.SlimeTypeForAttackRoom;
+        UnlockLab = data.UnlockLab;
+        LabLevel = data.LabLevel;
+        CountryUnlock = data.CountryUnlock;
+        CountryConquer = data.CountryConquer;
+        StockSelling_Number = data.StockSelling_Number;
+        StillHaveStock = data.StillHaveStock;
     }
 }

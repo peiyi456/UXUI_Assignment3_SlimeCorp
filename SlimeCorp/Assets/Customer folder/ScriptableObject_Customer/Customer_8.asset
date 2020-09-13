@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Punk
   image: {fileID: 0}
-  preferChoice: 4
+  preferChoice: 3
   animatorController: {fileID: 9100000, guid: f1c5f181284d9e2479ed5a9dccc8e58e, type: 2}

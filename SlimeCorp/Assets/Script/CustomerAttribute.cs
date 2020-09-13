@@ -51,7 +51,7 @@ public class CustomerAttribute : MonoBehaviour
         //Buy function;
         int index = preferChoice;
         ShoppingSystem_gameObject = GameObject.Find("ShoppingSystem (1)");
-        bool successBuy = ShoppingSystem_gameObject.GetComponent<ShoppingSystem>().Buy(index - 1);
+        bool successBuy = ShoppingSystem_gameObject.GetComponent<ShoppingSystem>().Buy(index);
 
         //Out of the shop
         alreadyPurchase = true;

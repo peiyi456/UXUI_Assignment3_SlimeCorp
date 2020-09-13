@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Kairo
   image: {fileID: 0}
-  preferChoice: 1
+  preferChoice: 0
   animatorController: {fileID: 9100000, guid: 68019e9efc995014d8638abeed03852b, type: 2}
