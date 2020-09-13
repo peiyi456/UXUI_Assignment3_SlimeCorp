@@ -17,11 +17,17 @@ public class TestingSpawnSlime : MonoBehaviour
 
     [Header("Balancing Use")]
     int[,] SlimeCount_lab_attackRoom = new int[,] { { 0, 0 }, { 25, 5 }, { 30, 10 }, { 50, 20 }, { 100, 30 }, { 200, 40 } };
-    int cooldownDeleteTime = 0;
+    float cooldownSpawnTime = 0;
 
     void Start()
     {
-        InvokeRepeating("CheckAttackRoomSlimeAmount", 2, 2);
+        InvokeRepeating("CheckAttackRoomSlimeAmount", 0, 2);
+    }
+
+    void Update()
+    {
+        
+        cooldownSpawnTime += Time.deltaTime;
     }
 
     void OnMouseDown()
@@ -68,44 +74,52 @@ public class TestingSpawnSlime : MonoBehaviour
 
     void CheckAttackRoomSlimeAmount()
     {
+        int[] SlimeShouldBeInAtkRoom = new int[4];
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 5; j++)
             {
                 if (GameManagerScript.SlimeTypeCount[i] >= SlimeCount_lab_attackRoom[j,0] && GameManagerScript.SlimeTypeCount[i] < SlimeCount_lab_attackRoom[j+1, 0])
                 {
-                    if (GameManagerScript.SlimeTypeForAttackRoom[i] < SlimeCount_lab_attackRoom[j,1])
-                    {
-                        int randomIndex = 0;
-                        if (Random.value < 0.5f)
-                        {
-                            randomIndex = 0;
-                        }
-                        else
-                        {
-                            randomIndex = 1;
-                        } 
-                        SpawnSlime(i, AtkRoomSpawnLocation[randomIndex].transform.position, false);
-                    }
-                    else if (GameManagerScript.SlimeTypeForAttackRoom[i] > SlimeCount_lab_attackRoom[j, 1] && cooldownDeleteTime == 0)
-                    {
-                        cooldownDeleteTime = GameManagerScript.SlimeTypeForAttackRoom[i] - SlimeCount_lab_attackRoom[j, 1];
-                        StartCoroutine(DeleteAtkRoomSlime(cooldownDeleteTime, i));
-                    }
+                    SlimeShouldBeInAtkRoom[i] = SlimeCount_lab_attackRoom[j, 1];
                 }
+                else if(GameManagerScript.SlimeTypeCount[i] >= SlimeCount_lab_attackRoom[5, 0])
+                {
+                    SlimeShouldBeInAtkRoom[i] = SlimeCount_lab_attackRoom[5, 1];
+                }
+            }
+
+            if (GameManagerScript.SlimeTypeForAttackRoom[i] < SlimeShouldBeInAtkRoom[i])
+            {
+                int randomIndex = 0;
+                if (Random.value < 0.5f)
+                {
+                    randomIndex = 0;
+                }
+                else
+                {
+                    randomIndex = 1;
+                }
+                SpawnSlime(i, AtkRoomSpawnLocation[randomIndex].transform.position, false);
+            }
+            else if (GameManagerScript.SlimeTypeForAttackRoom[i] > SlimeShouldBeInAtkRoom[i])
+            {
+                int needToDelete = GameManagerScript.SlimeTypeForAttackRoom[i] - SlimeShouldBeInAtkRoom[i];
+                DeleteAtkRoomSlime(needToDelete, i);
             }
         }
     }
 
-    IEnumerator DeleteAtkRoomSlime(int amountDelete, int index)
+    void DeleteAtkRoomSlime(int amountDelete, int index)
     {
-        while(amountDelete != 0)
+        for (int i = 0; i < amountDelete && i < AtkRoomArray[index].transform.childCount; i++)
         {
-            int randomNum = Random.Range(0, AtkRoomArray[index].transform.childCount);
-            Destroy(AtkRoomArray[index].transform.GetChild(randomNum).gameObject);
-            GameManagerScript.SlimeTypeForAttackRoom[index]--;
-            amountDelete--;
-            yield return null;
+            Destroy(AtkRoomArray[index].transform.GetChild(i).gameObject);
+        }
+        GameManagerScript.SlimeTypeForAttackRoom[index] -= amountDelete;
+        if(GameManagerScript.SlimeTypeForAttackRoom[index] < 0)
+        {
+            GameManagerScript.SlimeTypeForAttackRoom[index] = 0;
         }
     }
 }
