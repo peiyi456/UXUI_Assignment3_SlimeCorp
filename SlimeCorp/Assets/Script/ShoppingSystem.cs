@@ -33,7 +33,7 @@ public class ShoppingSystem : MonoBehaviour
 
     [Header("Out Of Stock")]
     public GameObject[] StockDetails_OutOfStock;
-    [SerializeField] int[] RestockCost_SlimeTypeCount = { 30, 45, 60, 80 };
+    [SerializeField] int[] RestockCost_SlimeTypeCount = { 100, 130, 165, 200 };
     [SerializeField] string[] SlimeType = { "Basic Slime", "Wood Slime", "Lava Slime", "Tek Slime" };
     public Text[] RestockCost_Text;
 
