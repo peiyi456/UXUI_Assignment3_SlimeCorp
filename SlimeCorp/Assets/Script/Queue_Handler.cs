@@ -33,7 +33,7 @@ public class Queue_Handler : MonoBehaviour
 
         if (guestList.Count != 0 && guestList[0].gameObject.transform.position == positionList[0])
         {
-            if (coolDownQueue >= 10f)
+            if (coolDownQueue >= 5f)
             {
                 RemovingGuest();
             }
@@ -70,6 +70,7 @@ public class Queue_Handler : MonoBehaviour
         customer.name = selectedCustomer.name;
         customer.GetComponent<SpriteRenderer>().sprite = selectedCustomer.image;
         customer.GetComponent<Animator>().runtimeAnimatorController = selectedCustomer.animatorController;
+        customer.GetComponent<CustomerAttribute>().preferChoice = selectedCustomer.preferChoice;
     }
 
     void RemovingGuest()

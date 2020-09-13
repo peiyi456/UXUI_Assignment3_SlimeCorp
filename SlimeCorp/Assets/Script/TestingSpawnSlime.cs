@@ -107,6 +107,5 @@ public class TestingSpawnSlime : MonoBehaviour
             amountDelete--;
             yield return null;
         }
-        Debug.Log("YESSSS");
     }
 }

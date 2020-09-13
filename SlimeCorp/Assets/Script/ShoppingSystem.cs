@@ -150,22 +150,21 @@ public class ShoppingSystem : MonoBehaviour
     /// <returns></returns>
     public bool Buy(int item)
     {
-        Debug.Log("Yes");
-        if (StockDetails_HaveStock[item] == true)
+        for(int i = 0; i < 4; i++)
         {
-            if (StockSelling_Number[item] > 0)
+            if (StockDetails_HaveStock[item - i] == true)
             {
-                StockSelling_Number[item]--;
-                StockSelling_Bar[item].value--;
-                GameManagerScript.TotalCash += StockSellingPrice_Number[item];
+                if(StockSelling_Number[item - i] > 0)
+                {
+                    StockSelling_Number[item]--;
+                    StockSelling_Bar[item].value--;
+                    GameManagerScript.TotalCash += StockSellingPrice_Number[item];
+                    i = 4;
+                    return true;
+                }
             }
-            return true;
         }
 
-        else
-        {
-            return false;
-        }
-
+        return false;
     }
 }

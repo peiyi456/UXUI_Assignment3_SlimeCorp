@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f045cd0e934cb624ab85babd7fb6b9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShoppingSystem_gameObject: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
   speed: 0
 --- !u!95 &3643929682339602874

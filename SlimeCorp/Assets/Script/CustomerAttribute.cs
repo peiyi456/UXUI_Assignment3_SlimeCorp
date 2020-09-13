@@ -9,8 +9,9 @@ public class CustomerAttribute : MonoBehaviour
 
     public Vector3 destination;
     public float speed;
+    public int preferChoice = 0;
     Vector3 InsideShopLocation = new Vector3(3f, 7.8f);
-    Vector3 LeavingShopLocation = new Vector3(2f, 7.8f);
+    Vector3 LeavingShopLocation = new Vector3(3.1f, 7.8f);
     Vector3 deleteColliderLocation = new Vector3(20f, 7.8f);
 
     private bool alreadyPurchase = false;
@@ -44,14 +45,27 @@ public class CustomerAttribute : MonoBehaviour
 
     IEnumerator Shopping()
     {
-        yield return new WaitForSeconds(8.5f);
-        //Buy function;
-        ShoppingSystem_gameObject = GameObject.Find("ShoppingSystem (1)");
-        ShoppingSystem_gameObject.GetComponent<ShoppingSystem>().Buy(0);
+        GetComponent<SpriteRenderer>().sortingOrder = 4;
+        yield return new WaitForSeconds(3.5f);
 
+        //Buy function;
+        int index = preferChoice;
+        ShoppingSystem_gameObject = GameObject.Find("ShoppingSystem (1)");
+        bool successBuy = ShoppingSystem_gameObject.GetComponent<ShoppingSystem>().Buy(index - 1);
+
+        //Out of the shop
         alreadyPurchase = true;
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;
+        GetComponent<SpriteRenderer>().sortingOrder = 7;
+        if(successBuy == true)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;
+        }
+        else
+        {
+            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 7;
+        }
         speed = 2f;
         destination = deleteColliderLocation;
     }
