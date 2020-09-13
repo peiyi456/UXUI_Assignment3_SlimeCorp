@@ -67,6 +67,7 @@ public class CanvasManager : MonoBehaviour
         AttackSystem.SetActive(false);
         AttackSceneCamera.GetComponent<Camera>().enabled = false;
         MainCamera.GetComponent<Camera>().enabled = true;
+        SoundManager.playBGmusic();
         StartCoroutine(ZoomOutFromTV());
     }
 
@@ -91,6 +92,7 @@ public class CanvasManager : MonoBehaviour
         MainCamera.GetComponent<Camera>().enabled = false;
         AttackSceneCamera.GetComponent<Camera>().enabled = true;
         AttackSystem.SetActive(true);
+        SoundManager.playAttackMusic();
     }
 
     IEnumerator ZoomOutFromTV()

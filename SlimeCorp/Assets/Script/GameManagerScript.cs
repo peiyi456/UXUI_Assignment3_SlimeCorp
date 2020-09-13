@@ -29,7 +29,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        LoadData();
     }
 
     // Update is called once per frame
@@ -71,11 +71,6 @@ public class GameManagerScript : MonoBehaviour
             {
                 LockLabScreen[i].SetActive(false);
             }
-        }
-
-        if (Input.GetKeyDown("space"))
-        {
-            LoadData();
         }
     }
 

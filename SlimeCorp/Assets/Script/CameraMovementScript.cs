@@ -11,7 +11,7 @@ public class CameraMovementScript : MonoBehaviour
     Camera mainCamera = null;
 
     Vector3 AttackRoomLocation, FactoryLocation, MarketLocation;
-    Vector3[] EachRoomLocation = { new Vector3(0f, 10f, -10f), new Vector3(0f, 0f, -10f), new Vector3(0f, -8.3f, -10f) };
+    Vector3[] EachRoomLocation = { new Vector3(2f, 10f, -10f), new Vector3(0f, 0f, -10f), new Vector3(0f, -8.3f, -10f) };
     Vector3 movingLocation;
     public int CameraLocation = 2;
     bool InTransition = false;
@@ -24,13 +24,7 @@ public class CameraMovementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = GetComponent<Camera>();
-
-        AttackRoomLocation = new Vector3(0f, 0f, -10f);
-        FactoryLocation = new Vector3(0f, -8.3f, -10f);
-        MarketLocation = new Vector3(0f, 10f, -10f);
-
-        transform.position = AttackRoomLocation;
+        transform.position = EachRoomLocation[2];
     }
 
     // Update is called once per frame

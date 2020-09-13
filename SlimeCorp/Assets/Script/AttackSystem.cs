@@ -303,11 +303,13 @@ public class AttackSystem : MonoBehaviour
 
         if(WinBattle)
         {
+            SoundManager.playWinMusic();
             Result_image[0].SetActive(true);
             GameManagerScript.CountryConquer[currentFlagGroup] = true;
         }
         else
         {
+            SoundManager.playLossMusic();
             Result_image[1].SetActive(true);
         }
     }

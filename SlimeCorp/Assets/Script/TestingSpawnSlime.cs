@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class TestingSpawnSlime : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TestingSpawnSlime : MonoBehaviour
     public GameObject[] LabArray;
     public GameObject[] AtkRoomArray;
     public GameObject[] AtkRoomSpawnLocation;
+    public PlayableDirector timeline;
 
     [Header("Balancing Use")]
     int[,] SlimeCount_lab_attackRoom = new int[,] { { 0, 0 }, { 25, 5 }, { 30, 10 }, { 50, 20 }, { 100, 30 }, { 200, 40 } };
@@ -22,18 +24,16 @@ public class TestingSpawnSlime : MonoBehaviour
         InvokeRepeating("CheckAttackRoomSlimeAmount", 2, 2);
     }
 
-    void Update()
-    {
-
-    }
-
     void OnMouseDown()
     {
-        for (int i = 0; i < 4; i++)
+        if(timeline.state == PlayState.Paused)
         {
-            if (GameManagerScript.UnlockLab[i] == true)
+            for (int i = 0; i < 4; i++)
             {
-                SpawnSlime(i, SpawnedLocation[i].transform.position, true);
+                if (GameManagerScript.UnlockLab[i] == true)
+                {
+                    SpawnSlime(i, SpawnedLocation[i].transform.position, true);
+                }
             }
         }
     }
