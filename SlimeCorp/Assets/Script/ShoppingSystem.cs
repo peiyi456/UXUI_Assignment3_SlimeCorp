@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ShoppingSystem : MonoBehaviour
 {
+    //public GameObject StockPopup;
+
     [Header("Stock Button")]
     public Button[] StockButton;
 
@@ -17,7 +19,7 @@ public class ShoppingSystem : MonoBehaviour
 
     [Header("Have Stock")]
     public GameObject[] StockDetails_HaveStock;
-    public Slider[] StockSelling_Bar;
+    public Slider[] StockSelling_Bar; //Save at the value that i need to save
     public Text[] StockSelling_Text;
 
 
@@ -39,7 +41,7 @@ public class ShoppingSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Find("StockPopup").SetActive(false);
+        //StockPopup.SetActive(false);
         for (int i = 1; i < 4; i++)
         {
             StockButton[i].gameObject.SetActive(false);
@@ -65,6 +67,9 @@ public class ShoppingSystem : MonoBehaviour
             StockSelling_Text[i].text = GameManagerScript.StockSelling_Number[i].ToString("n0");
             StockSellingPrice_Text[i].text = StockSellingPrice_Number[i].ToString("n0") + " " + "G";
             RestockCost_Text[i].text = RestockCost_SlimeTypeCount[i].ToString("n0") + " " + SlimeType[i];
+            StockSelling_Bar[i].value = GameManagerScript.StockSelling_Number[i];
+            //Debug.Log("Stock Selling Number" + GameManagerScript.StockSelling_Number[i] + "Bar" + (i));
+            //Debug.Log("Bar Value" + StockSelling_Bar[i].value + "Bar" + (i));
         }
     }
 
@@ -105,7 +110,6 @@ public class ShoppingSystem : MonoBehaviour
                     StockButton[i].interactable = false;
                     StockDetails_HaveStock[i].SetActive(true);
                     StockDetails_OutOfStock[i].SetActive(false);
-                    //Debug.Log("HaveStock");
                 }
                 else
                 {
@@ -115,7 +119,6 @@ public class ShoppingSystem : MonoBehaviour
                     StockDetails_HaveStock[i].SetActive(false);
                     StockDetails_OutOfStock[i].SetActive(true);
                     StockThatRunOut++;
-                    //Debug.Log("NoStock");
                 }
             }
             else
@@ -149,7 +152,7 @@ public class ShoppingSystem : MonoBehaviour
                     GameManagerScript.SlimeTypeCount[buttonIndex] -= RestockCost_SlimeTypeCount[buttonIndex];
                     GameManagerScript.StockSelling_Number[buttonIndex] = MaxStock_Number[buttonIndex];
                     StockSelling_Bar[buttonIndex].maxValue = MaxStock_Number[buttonIndex];
-                    StockSelling_Bar[buttonIndex].value = MaxStock_Number[buttonIndex];
+                    //StockSelling_Bar[buttonIndex].value = MaxStock_Number[buttonIndex];
                     GameManagerScript.StillHaveStock[buttonIndex] = true;
                 }
             }
@@ -182,7 +185,8 @@ public class ShoppingSystem : MonoBehaviour
                 if(GameManagerScript.StockSelling_Number[item - i] > 0)
                 {
                     GameManagerScript.StockSelling_Number[item - i]--;
-                    StockSelling_Bar[item - i].value--;
+                    //StockSelling_Bar[item - i].value = GameManagerScript.StockSelling_Number[item - i];
+                    //Debug.Log(GameManagerScript.StockSelling_Number[item - i] + "Bar" + (item-i));
                     GameManagerScript.TotalCash += StockSellingPrice_Number[item - i];
                     i = 4;
                     return true;

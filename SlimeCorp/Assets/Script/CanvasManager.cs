@@ -19,6 +19,7 @@ public class CanvasManager : MonoBehaviour
     void Start()
     {
         CameraScript = MainCamera.GetComponent<CameraMovementScript>();
+        Market_StockPanel.SetActive(false);
     }
 
     // Update is called once per frame
