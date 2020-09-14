@@ -1277,8 +1277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -434.3}
-  m_SizeDelta: {x: 800.0032, y: 817.5201}
+  m_AnchoredPosition: {x: 0, y: -770.7}
+  m_SizeDelta: {x: 800.0032, y: 1490.2583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1329770344
 MonoBehaviour:
@@ -1312,7 +1312,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Attack Button
+  m_Text: 'Basic Slime
+
+    Wood Slime
+
+    Lava Slime
+
+    Tek Slime
+
+    Attack
+    Button
 
     Cash Icon
 
@@ -1320,10 +1329,10 @@ MonoBehaviour:
 
     Lab Button
 
-    Info
-    Button
+    Info Button
 
-    Left Button
+    Left
+    Button
 
     Right Button
 
@@ -1331,10 +1340,10 @@ MonoBehaviour:
 
     Slime Bag
 
-    Slime
-    Doll
+    Slime Doll
 
-    Slime Keychain
+    Slime
+    Keychain
 
     Slime T-Shirt
 
@@ -1342,17 +1351,44 @@ MonoBehaviour:
 
     Slime Panel
 
-    Unlock
-    Button
+    Unlock Button
 
-    Upgrade Button
+    Upgrade
+    Button
 
     Button Background Shadow
 
     Confirm Button
 
-    Nope
-    Button'
+    Nope Button
+
+    Shop
+
+    Customers
+
+    Cloud
+
+    In-Game
+    Scene Map
+
+    Conquered Button
+
+    Slime Factory
+
+    Van Darkhoime
+
+    Richardo
+
+    Locked
+    Icon
+
+    Warning Icon
+
+    Exit Icon
+
+    Love Textbox
+
+    Thunder Textbox'
 --- !u!222 &1329770345
 CanvasRenderer:
   m_ObjectHideFlags: 0
