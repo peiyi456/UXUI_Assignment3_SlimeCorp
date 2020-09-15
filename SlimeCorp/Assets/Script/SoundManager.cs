@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         audioSrc = GetComponent<AudioSource>();
         BGmusic = Resources.Load<AudioClip>("BGmusic");
         AttackBG = Resources.Load<AudioClip>("AttackMusic");

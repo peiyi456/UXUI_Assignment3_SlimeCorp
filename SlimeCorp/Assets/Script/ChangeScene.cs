@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
 
 public class ChangeScene : MonoBehaviour
 {
+    AsyncOperation operation;
     public AudioSource ChangeSceneSoundSource;
     public AudioSource BackgroundMusic;
     public AudioClip ChangeSceneSound;
@@ -22,7 +24,12 @@ public class ChangeScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && startLoading == false)
+        
+    }
+
+    void OnMouseDown()
+    {
+        if (startLoading == false && !EventSystem.current.IsPointerOverGameObject())
         {
             startLoading = true;
             timeline.Play();
@@ -33,7 +40,7 @@ public class ChangeScene : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
+        operation = SceneManager.LoadSceneAsync(1);
         operation.allowSceneActivation = false;
 
         while (!operation.isDone)
@@ -46,5 +53,10 @@ public class ChangeScene : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    public void OpenCreditScene()
+    {
+        operation = SceneManager.LoadSceneAsync(3);
     }
 }

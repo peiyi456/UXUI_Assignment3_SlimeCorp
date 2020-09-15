@@ -51,6 +51,7 @@ public class LoadingPage : MonoBehaviour
     IEnumerator LoadScene()
     {
         yield return new WaitForSeconds(1);
+        MainMenuBGmusicScript.Instance.gameObject.GetComponent<AudioSource>().Pause();
         SceneManager.LoadScene(2);
     }
 }
