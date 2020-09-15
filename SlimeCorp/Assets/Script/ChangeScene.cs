@@ -29,12 +29,21 @@ public class ChangeScene : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (startLoading == false && !EventSystem.current.IsPointerOverGameObject())
+        if (startLoading == false)
         {
-            startLoading = true;
-            timeline.Play();
-            StartCoroutine(LoadScene());
-            ChangeSceneSoundSource.PlayOneShot(ChangeSceneSound);
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                startLoading = true;
+                timeline.Play();
+                StartCoroutine(LoadScene());
+                ChangeSceneSoundSource.PlayOneShot(ChangeSceneSound);
+            }
+            
+
+            //if (!EventSystem.current.IsPointerOverGameObject() || !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            //{
+
+            //}
         }
     }
 

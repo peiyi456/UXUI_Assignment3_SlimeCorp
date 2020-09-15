@@ -87,7 +87,7 @@ public class GameManagerScript : MonoBehaviour
         TotalCash = data.TotalCash;
 
         SlimeTypeCount = data.SlimeTypeCount;
-        SlimeTypeForAttackRoom = data.SlimeTypeForAttackRoom;
+        //SlimeTypeForAttackRoom = data.SlimeTypeForAttackRoom;
         UnlockLab = data.UnlockLab;
         LabLevel = data.LabLevel;
         CountryUnlock = data.CountryUnlock;

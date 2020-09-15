@@ -23,7 +23,7 @@ public class PlayerData
         TotalCash = GameManagerScript.TotalCash;
 
         SlimeTypeCount = GameManagerScript.SlimeTypeCount;
-        SlimeTypeForAttackRoom = GameManagerScript.SlimeTypeForAttackRoom;
+        //SlimeTypeForAttackRoom = GameManagerScript.SlimeTypeForAttackRoom;
         UnlockLab = GameManagerScript.UnlockLab;
         LabLevel = GameManagerScript.LabLevel;
         CountryUnlock = GameManagerScript.CountryUnlock;
